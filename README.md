@@ -2,6 +2,9 @@
 Collect ammo crates, transport them with your truck and deliver to battlefields. Your troops need more ammo to win! 
 ![](Screens/anim01.gif)
 
+## Note
+[Go to my C# scripts](Assets/Scripts)
+
 ## Implemented features
 
 ### Player
