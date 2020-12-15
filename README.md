@@ -19,5 +19,5 @@ Collect ammo crates, transport them with your truck and deliver to battlefields.
 - controller support
 
 ## Used tools
--[Node Canvas](https://assetstore.unity.com/packages/tools/visual-scripting/nodecanvas-14914) for AI FSMs
--[Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041) best inspector and serializer on market
+- [Node Canvas](https://assetstore.unity.com/packages/tools/visual-scripting/nodecanvas-14914) for AI FSMs  
+- [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041) best inspector and serializer on market
