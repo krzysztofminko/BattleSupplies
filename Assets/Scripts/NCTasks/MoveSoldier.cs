@@ -21,8 +21,7 @@ namespace NodeCanvas.Tasks.Actions
 
 		protected override void OnStop(bool interrupted)
 		{
-			if (interrupted)
-				agent.Stop(true);
+			agent.Stop(true);
 		}
 	}
 }

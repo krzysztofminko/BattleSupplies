@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  damageLossDistance: 50
+  damageLossDistance: 40
   damageLossCurve:
     serializedVersion: 2
     m_Curve:
@@ -61,7 +61,7 @@ MonoBehaviour:
       outWeight: 0.22737819
     - serializedVersion: 3
       time: 1
-      value: 0
+      value: 0.25
       inSlope: 0
       outSlope: 0
       tangentMode: 0
