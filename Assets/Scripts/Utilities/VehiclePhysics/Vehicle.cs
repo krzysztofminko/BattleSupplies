@@ -33,11 +33,16 @@ namespace VehiclePhysics
         public Vector3 customCenterOfMass;
         public float maxMotorTorque = 400;
         public float maxBrakeTorque = 400;
+        public float handBrakeTorque = 400;
+        public float autoBrakeTorque = 400;
         public float maxSteeringAngle = 30;
+        [SuffixLabel("maxAngle/sec")]
+        public float steeringSpeed = 1.5f;
         [Min(1)]
         public float maxSpeed = 90;
         public AnimationCurve speedToTorque;
         public AnimationCurve speedToSteering;
+        public bool handBrake;
 
         [Header("Controls")]
         [PropertyRange(-1, 1)]
@@ -72,13 +77,33 @@ namespace VehiclePhysics
                 GetComponent<Rigidbody>().centerOfMass = customCenterOfMass;
         }
 
+        [ReadOnly, ShowInInspector]
+        private float motor;
+        [ReadOnly, ShowInInspector]
+        private float brake;
+        [ReadOnly, ShowInInspector]
+        private float steering;
+
+        private void Update()
+        {
+            motor = maxMotorTorque * motorInput * speedToTorque.Evaluate(Speed / maxSpeed);
+            brake = maxBrakeTorque * brakeInput;
+
+            if (motorInput == 0 && brakeInput == 0)
+                brake = autoBrakeTorque;
+            if (Speed / maxSpeed > 1)
+            {
+                motor = 0;
+                brake = maxBrakeTorque;
+            }
+            if (handBrake)
+                brake = handBrakeTorque;
+
+            steering = maxSteeringAngle * steeringInput * speedToSteering.Evaluate(Speed / maxSpeed);
+        }
 
         private void FixedUpdate()
         {
-            float motor = maxMotorTorque * motorInput * speedToTorque.Evaluate(Speed / maxSpeed);
-            float brake = maxBrakeTorque * brakeInput;
-            float steering = maxSteeringAngle * steeringInput * speedToSteering.Evaluate(Speed/ maxSpeed);
-
             float rpm = 0;
             foreach (AxleInfo axleInfo in axleInfos)
             {

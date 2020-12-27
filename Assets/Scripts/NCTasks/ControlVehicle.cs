@@ -13,8 +13,6 @@ namespace NodeCanvas.Tasks.Actions
 		public BBParameter<ExtendedVehicle> _vehicle;
 		private ExtendedVehicle vehicle;
 
-		public BBParameter<float> steeringSpeed = 1;
-
 		private ExtendedVehicle.Seat seat;
 
 		//TODO: Create Driver class and move characterController there
@@ -36,7 +34,8 @@ namespace NodeCanvas.Tasks.Actions
 					agent.parent = seat.transform;
 					agent.localPosition = Vector3.zero;
 					agent.localRotation = Quaternion.identity;
-					characterController.enabled = false;
+					characterController.enabled = false; 
+					vehicle.handBrake = false;
 				}
 				else
 				{
@@ -48,24 +47,25 @@ namespace NodeCanvas.Tasks.Actions
 		protected override void OnUpdate()
 		{
 			vehicle.motorInput = Input.GetAxis("Vertical");
-			vehicle.brakeInput = Input.GetButton("Brakes") ? 1 : 0;
+			vehicle.handBrake = Input.GetButton("Brakes");
+			vehicle.brakeInput = 0;
 
 			if (Input.GetAxis("Horizontal") > vehicle.steeringInput)
-				vehicle.steeringInput = Mathf.Min(Input.GetAxis("Horizontal"), vehicle.steeringInput + Time.deltaTime * steeringSpeed.value);
+				vehicle.steeringInput = Mathf.Min(Input.GetAxis("Horizontal"), vehicle.steeringInput + Time.deltaTime * vehicle.steeringSpeed);
 			else if (Input.GetAxis("Horizontal") < vehicle.steeringInput)
-				vehicle.steeringInput = Mathf.Max(Input.GetAxis("Horizontal"), vehicle.steeringInput - Time.deltaTime * steeringSpeed.value);
+				vehicle.steeringInput = Mathf.Max(Input.GetAxis("Horizontal"), vehicle.steeringInput - Time.deltaTime * vehicle.steeringSpeed);
 
 			if (vehicle.IsMovingForward)
 			{
 				vehicle.motorInput = Mathf.Max(0, Input.GetAxis("Vertical"));
 				if (Input.GetAxis("Vertical") < 0)
-					vehicle.brakeInput = -Input.GetAxis("Vertical") * 0.5f;
+					vehicle.brakeInput = -Input.GetAxis("Vertical");
 			}
 			else if (vehicle.IsMovingBackward)
 			{
 				vehicle.motorInput = Mathf.Min(0, Input.GetAxis("Vertical"));
 				if (Input.GetAxis("Vertical") > 0)
-					vehicle.brakeInput = Input.GetAxis("Vertical") * 0.5f;
+					vehicle.brakeInput = Input.GetAxis("Vertical");
 			}
 		}
 
@@ -77,6 +77,7 @@ namespace NodeCanvas.Tasks.Actions
 				agent.position = seat.exit.position;
 				agent.rotation = seat.exit.rotation;
 			}
+			vehicle.handBrake = true;
 			characterController.enabled = true;
 		}
 
