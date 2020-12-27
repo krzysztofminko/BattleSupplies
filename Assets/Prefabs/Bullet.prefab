@@ -72,6 +72,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   speed: 100
+  height: 2
   travelledDistance: 0
   actualDamage: 0
   target: {fileID: 0}

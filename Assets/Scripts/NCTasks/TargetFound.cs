@@ -8,7 +8,6 @@ namespace NodeCanvas.Tasks.Actions
 	[Category("Soldier")]
 	public class TargetFound : ConditionTask<Soldier>
 	{
-		public Vector3 offset;
 		public float radius = 10;
 		public LayerMask layerMask;
 		public BBParameter<Destroyable> target;
@@ -17,7 +16,7 @@ namespace NodeCanvas.Tasks.Actions
 
 		protected override bool OnCheck()
 		{
-			Collider[] colliders = Physics.OverlapSphere(agent.transform.position + agent.transform.rotation * offset, radius, layerMask, QueryTriggerInteraction.Collide)
+			Collider[] colliders = Physics.OverlapSphere(agent.transform.position, radius, layerMask, QueryTriggerInteraction.Collide)
 				.Where(c => c.GetComponent<ITeam>().Team != agent.Team)
 				.OrderBy(c => Distance.Manhattan2D(c.transform.position, agent.transform.position))
 				.ToArray();
@@ -31,7 +30,7 @@ namespace NodeCanvas.Tasks.Actions
 		public override void OnDrawGizmosSelected()
 		{
 			if (agent != null)
-				Gizmos.DrawWireSphere(agent.transform.position + offset, radius); 
+				Gizmos.DrawWireSphere(agent.transform.position, radius); 
 		}
 	}
 }

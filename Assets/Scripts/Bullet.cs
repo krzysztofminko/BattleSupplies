@@ -20,17 +20,24 @@ public class Bullet : MonoBehaviour
 	[ReadOnly]
 	public Destroyable target;
 
+	private float height;
+
+	private void Start()
+	{
+		height = transform.position.y;
+	}
+
 	private void Update()
 	{
 		if (target)
 		{
-			if ((target.transform.position - transform.position).sqrMagnitude < speed * Time.deltaTime)
+			if ((target.transform.position + Vector3.up * height - transform.position).sqrMagnitude < speed * Time.deltaTime)
 			{
 				target.HP -= actualDamage;
 				Destroy(gameObject);
 			}
-			transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
-			transform.forward = (target.transform.position - transform.position);
+			transform.position += (target.transform.position + Vector3.up * height - transform.position).normalized * speed * Time.deltaTime;
+			transform.forward = target.transform.position + Vector3.up * height - transform.position;
 			travelledDistance += speed * Time.deltaTime;
 			actualDamage = damage * damageLossCurve.Evaluate(travelledDistance / damageLossDistance);
 		}

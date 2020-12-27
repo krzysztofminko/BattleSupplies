@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class Soldier : MonoBehaviour, ITeam
 {
     public enum MoveStatus { Running, Success, Failure}
@@ -51,6 +51,7 @@ public class Soldier : MonoBehaviour, ITeam
     
 
     private NavMeshAgent nmAgent;
+    private Animator animator;
 
     private void OnValidate()
     {
@@ -61,6 +62,7 @@ public class Soldier : MonoBehaviour, ITeam
     private void Awake()
     {
         nmAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     public MoveStatus Move(Transform target, float distance = 1) => Move(target.position, distance);
@@ -83,6 +85,7 @@ public class Soldier : MonoBehaviour, ITeam
                 }
                 else
                 {
+                    animator.SetFloat("MoveSpeed", nmAgent.velocity.magnitude);
                     return MoveStatus.Running;
                 }
             }
@@ -96,7 +99,8 @@ public class Soldier : MonoBehaviour, ITeam
 
     public void Stop(bool immediately = false)
     {
-        if(nmAgent.enabled && !IsDestroyed)
+        animator.SetFloat("MoveSpeed", 0);
+        if (nmAgent.enabled && !IsDestroyed)
             nmAgent.SetDestination(immediately ? transform.position : (transform.position + transform.forward * nmAgent.stoppingDistance));
     }
 

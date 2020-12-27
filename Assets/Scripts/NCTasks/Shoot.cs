@@ -12,21 +12,31 @@ namespace NodeCanvas.Tasks.Actions
 		public BBParameter<Destroyable> target;
 		public BBParameter<float> minDelay = 1;
 		public BBParameter<float> maxDelay = 2;
+		public BBParameter<float> animationDelay;
+		public BBParameter<float> animationDuration = 1.5f;
 		private float timer;
 		private float delay;
+		private bool shooted;
+		private bool instantiated;
+
+		[GetFromAgent]
+		private Animator animator;
 
 		protected override void OnExecute()
 		{
+			timer = 0;
 			delay = Random.Range(minDelay.value, maxDelay.value);
+			shooted= false;
+			instantiated = false;
 		}
 
 		protected override void OnUpdate()
 		{
+			timer += Time.deltaTime;
+
 			if (target.value)
 			{
 			//	Debug.DrawLine(agent.transform.position + Vector3.up, target.value.transform.position + Vector3.up, agent.Team == 0 ? Color.blue : Color.red, Time.deltaTime);
-
-				timer += Time.deltaTime;
 
 				Quaternion targetRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(target.value.transform.position - agent.transform.position, Vector3.up));
 				if (Quaternion.Angle(agent.transform.rotation, targetRotation) > 1)
@@ -37,10 +47,23 @@ namespace NodeCanvas.Tasks.Actions
 				{
 					if (timer > delay)
 					{
-						timer = 0;
-						Object.Instantiate(agent.amunition, agent.transform.position + Vector3.up, agent.transform.rotation).target = target.value;
-						agent.AmmoCount--;
-						EndAction(true);
+						if (!shooted)
+						{
+							animator.SetTrigger("Shoot");
+							shooted = true;
+						}
+
+						if (timer > delay + animationDelay.value && !instantiated)
+						{
+							Object.Instantiate(agent.amunition, agent.transform.position + Vector3.up * 2, agent.transform.rotation).target = target.value;
+							agent.AmmoCount--;
+							instantiated = true;
+						}
+
+						if(timer > delay + animationDuration.value)
+						{
+							EndAction(true);
+						}
 					}
 				}
 				else
@@ -49,7 +72,7 @@ namespace NodeCanvas.Tasks.Actions
 					EndAction(false);
 				}
 			}
-			else
+			else if(!shooted || timer > delay + animationDuration.value)
 			{
 				EndAction(true);
 			}
