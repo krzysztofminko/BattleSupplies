@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions
 {
-	//TODO: Create separate action EnterVehicle
+	//TODO: Create separate action EnterVehicle, passengers also need it
 	[Category("Player")]
 	public class ControlVehicle : ActionTask<Transform>
 	{
@@ -15,7 +15,7 @@ namespace NodeCanvas.Tasks.Actions
 
 		private ExtendedVehicle.Seat seat;
 
-		//TODO: Create Driver class and move characterController there
+		//TODO: Create Driver class and move characterController there?
 		[GetFromAgent]
 		private CharacterController characterController;
 
