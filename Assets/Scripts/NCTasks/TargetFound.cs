@@ -1,7 +1,9 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace NodeCanvas.Tasks.Actions
 {
@@ -15,15 +17,15 @@ namespace NodeCanvas.Tasks.Actions
 		protected override string info { get => "Target found < " + radius; }
 
 		protected override bool OnCheck()
-		{
-			Collider[] colliders = Physics.OverlapSphere(agent.transform.position, radius, layerMask, QueryTriggerInteraction.Collide)
+		{			
+			//TODO: Optimizations required (try 3 x 100 soldiers) 
+			IEnumerable<Collider> colliders = Physics.OverlapSphere(agent.transform.position, radius, layerMask, QueryTriggerInteraction.Collide)
 				.Where(c => c.GetComponent<ITeam>().Team != agent.Team)
-				.OrderBy(c => Distance.Manhattan2D(c.transform.position, agent.transform.position))
-				.ToArray();
+				.OrderBy(c => Distance.Manhattan2D(c.transform.position, agent.transform.position));
 
-			if (colliders.Length > 0)
-				target.value = colliders[Random.Range(0, colliders.Length / 4)].GetComponent<Destroyable>();
-
+			if (colliders.Count() > 0)
+				target.value = colliders.ElementAt(Random.Range(0, colliders.Count() / 4)).GetComponent<Destroyable>();
+				
 			return target.value;
 		}
 
