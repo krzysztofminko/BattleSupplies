@@ -16,12 +16,19 @@ namespace NodeCanvas.Tasks.Actions
 
 		protected override void OnExecute()
 		{
-			timer = 0;
-
-			realCount = Mathf.Clamp(count.value, 0, ammoSupply.value.Count);
-			if (realCount > 0)
+			if (ammoSupply.value)
 			{
-				ammoSupply.value.Count -= realCount;
+				timer = 0;
+
+				realCount = Mathf.Clamp(count.value, 0, ammoSupply.value.Count);
+				if (realCount > 0)
+				{
+					ammoSupply.value.Count -= realCount;
+				}
+				else
+				{
+					EndAction(false);
+				}
 			}
 			else
 			{
@@ -31,11 +38,18 @@ namespace NodeCanvas.Tasks.Actions
 
 		protected override void OnUpdate()
 		{
-			timer += Time.deltaTime;
-			if (timer > delay.value)
+			if (ammoSupply.value)
 			{
-				agent.AmmoCount += realCount;
-				EndAction(true);
+				timer += Time.deltaTime;
+				if (timer > delay.value)
+				{
+					agent.AmmoCount += realCount;
+					EndAction(true);
+				}
+			}
+			else
+			{
+				EndAction(false);
 			}
 		}
 	}
