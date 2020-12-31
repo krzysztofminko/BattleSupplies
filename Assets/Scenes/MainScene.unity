@@ -2280,7 +2280,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 300
   _hpMax: 300
+  _isDestroyed: 0
   healthBar: {fileID: 619636980}
+  overrideDestroyMethod: 0
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1093338995
 MonoBehaviour:
   m_ObjectHideFlags: 0
