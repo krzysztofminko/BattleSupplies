@@ -19,9 +19,9 @@ TagManager:
   - Player
   - Ground
   - Storage
-  - Cargo
+  - AmmoSupply
   - Soldier
-  - 
+  - Ragdoll
   - 
   - 
   - 

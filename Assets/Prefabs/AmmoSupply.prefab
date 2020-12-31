@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 8525078010694435504}
   - component: {fileID: 4807753931271000802}
   m_Layer: 14
-  m_Name: Crate
+  m_Name: AmmoSupply
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
