@@ -145,7 +145,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.75
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -272,6 +272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4505334842269277852}
+  - component: {fileID: 7548187323632655168}
   m_Layer: 5
   m_Name: AmmoBar
   m_TagString: Untagged
@@ -300,6 +301,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1.5, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7548187323632655168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6213040919840806957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d028c65e8d776ad4c864a03fd12a6f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foreground: {fileID: 5226891949794709558}
+  background: {fileID: 4671032722142497871}
+  _value: 1
 --- !u!1 &7508275759980200089
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _count: 30
   max: 30
-  uiBar: {fileID: 5226891949794709558}
+  uiBar: {fileID: 7548187323632655168}
 --- !u!208 &4807753931271000802
 NavMeshObstacle:
   m_ObjectHideFlags: 0

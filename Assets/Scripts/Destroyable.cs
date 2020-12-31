@@ -20,7 +20,7 @@ public class Destroyable : MonoBehaviour
             {
                 _hp = Mathf.Clamp(value, 0, 100);
                 if (healthBar)
-                    healthBar.fillAmount = HP / HPMax;
+                    healthBar.Value = HP / HPMax;
                 if (_hp == 0)
                 {
                     IsDestroyed = true;
@@ -41,7 +41,7 @@ public class Destroyable : MonoBehaviour
     public bool IsDestroyed { get => _isDestroyed; private set => _isDestroyed = value; }
 
     [SerializeField]
-    private Image healthBar;
+    private ProgressBar healthBar;
 
     [SerializeField]
     private bool overrideDestroyMethod;
@@ -52,6 +52,6 @@ public class Destroyable : MonoBehaviour
     private void OnValidate()
     {
         if(healthBar)
-            healthBar.fillAmount = HP / HPMax;
+            healthBar.Value = HP / HPMax;
     }
 }

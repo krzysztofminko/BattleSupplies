@@ -15,7 +15,7 @@ public class AmmoSupply : MonoBehaviour
             {
                 _count = Mathf.Clamp(value, 0, max);
                 if (uiBar)
-                    uiBar.fillAmount = 1f * Count / max;
+                    uiBar.Value = 1f * Count / max;
                 if (_count == 0)
                     Destroy(gameObject);
             }
@@ -25,11 +25,11 @@ public class AmmoSupply : MonoBehaviour
     private int max = 30;
 
     [SerializeField]
-    private Image uiBar;
+    private ProgressBar uiBar;
 
     private void OnValidate()
     {
         if (uiBar)
-            uiBar.fillAmount = 1f * Count / max;
+            uiBar.Value = 1f * Count / max;
     }
 }

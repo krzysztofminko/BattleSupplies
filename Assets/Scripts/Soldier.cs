@@ -24,7 +24,7 @@ public class Soldier : MonoBehaviour, ITeam
             {
                 _ammoCount = Mathf.Clamp(value, 0, AmmoMax);
                 if (ammoBar)
-                    ammoBar.fillAmount = 1f * AmmoCount / AmmoMax;
+                    ammoBar.Value = 1f * AmmoCount / AmmoMax;
             }
         }
     }
@@ -37,7 +37,7 @@ public class Soldier : MonoBehaviour, ITeam
     public int ammoResupplyTrigger = 10;
 
     [SerializeField]
-    private Image ammoBar;
+    private ProgressBar ammoBar;
 
     [SerializeField]
     private List<Rigidbody> ragdollParts;
@@ -58,7 +58,7 @@ public class Soldier : MonoBehaviour, ITeam
     private void OnValidate()
     {
         if (ammoBar)
-            ammoBar.fillAmount = 1f * AmmoCount / AmmoMax;
+            ammoBar.Value = 1f * AmmoCount / AmmoMax;
     }
 
     private void Awake()

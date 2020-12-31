@@ -161,7 +161,7 @@ MonoBehaviour:
   _ammoCount: 20
   _ammoMax: 20
   ammoResupplyTrigger: 10
-  ammoBar: {fileID: 8418185371624879375}
+  ammoBar: {fileID: 3455477836348515159}
   ragdollParts: []
   squad: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
   _hp: 100
   _hpMax: 100
   _isDestroyed: 0
-  healthBar: {fileID: 4253465173163726241}
+  healthBar: {fileID: 1386286849823131189}
   overrideDestroyMethod: 1
   onDestroy:
     m_PersistentCalls:
@@ -344,6 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8295750566731003700}
+  - component: {fileID: 1386286849823131189}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -372,6 +373,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 2.31}
   m_SizeDelta: {x: 1.5, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1386286849823131189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751146322473388060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d028c65e8d776ad4c864a03fd12a6f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foreground: {fileID: 4253465173163726241}
+  background: {fileID: 3610851091736270306}
+  _value: 1
 --- !u!1 &5336161892880933197
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8522928668339438403}
+  - component: {fileID: 3455477836348515159}
   m_Layer: 5
   m_Name: AmmoBar
   m_TagString: Untagged
@@ -484,6 +501,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 2.1213202}
   m_SizeDelta: {x: 1.5, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3455477836348515159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5395420148536530821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d028c65e8d776ad4c864a03fd12a6f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foreground: {fileID: 8418185371624879375}
+  background: {fileID: 7716296162527638198}
+  _value: 1
 --- !u!1 &6925465813006615721
 GameObject:
   m_ObjectHideFlags: 0
