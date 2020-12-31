@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 [HideMonoScript]
@@ -21,7 +22,13 @@ public class Destroyable : MonoBehaviour
                 if (healthBar)
                     healthBar.fillAmount = HP / HPMax;
                 if (_hp == 0)
-                    Destroy(gameObject);
+                {
+                    IsDestroyed = true;
+                    if (overrideDestroyMethod)
+                        onDestroy?.Invoke();
+                    else
+                        Destroy(gameObject);
+                }
             }
         }
     }
@@ -29,8 +36,18 @@ public class Destroyable : MonoBehaviour
     private float _hpMax = 100;
     public float HPMax { get => _hpMax; set => _hpMax = value; }
 
+    [SerializeField, ReadOnly]
+    private bool _isDestroyed;
+    public bool IsDestroyed { get => _isDestroyed; private set => _isDestroyed = value; }
+
     [SerializeField]
     private Image healthBar;
+
+    [SerializeField]
+    private bool overrideDestroyMethod;
+
+    [Tooltip("Override Destroy method"), ShowIf("overrideDestroyMethod")]
+    public UnityEvent onDestroy;
 
     private void OnValidate()
     {

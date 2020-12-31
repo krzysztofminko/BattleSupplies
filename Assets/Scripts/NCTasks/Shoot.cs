@@ -34,6 +34,9 @@ namespace NodeCanvas.Tasks.Actions
 		{
 			timer += Time.deltaTime;
 
+			if (target.value && target.value.IsDestroyed)
+				target.value = null;
+
 			if (target.value)
 			{
 			//	Debug.DrawLine(agent.transform.position + Vector3.up, target.value.transform.position + Vector3.up, agent.Team == 0 ? Color.blue : Color.red, Time.deltaTime);

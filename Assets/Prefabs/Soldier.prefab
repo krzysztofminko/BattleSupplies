@@ -162,6 +162,7 @@ MonoBehaviour:
   _ammoMax: 20
   ammoResupplyTrigger: 10
   ammoBar: {fileID: 8418185371624879375}
+  ragdollParts: []
   squad: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   _team: 0
@@ -179,7 +180,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _hpMax: 100
+  _isDestroyed: 0
   healthBar: {fileID: 4253465173163726241}
+  overrideDestroyMethod: 1
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3697569766898659260}
+        m_TargetAssemblyTypeName: Soldier, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!195 &3697569766898659262
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -245,20 +263,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedBlackboard: '{"_variables":{"targetPosition":{"_propertyPath":"Soldier.targetPosition","_name":"targetPosition","_id":"d5a6b750-15a1-4ab8-8c61-11f9c7503411","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Target":{"_name":"Target","_id":"013f0fd4-0952-46f9-a2d9-3a0592bcd2d6","$type":"NodeCanvas.Framework.Variable`1[[Destroyable,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"TargetAmmo":{"_name":"TargetAmmo","_id":"a5da6d2d-e3d6-4604-8c76-1219c77945f9","$type":"NodeCanvas.Framework.Variable`1[[Cargo,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"AmmoCount":{"_propertyPath":"Soldier.AmmoCount","_name":"AmmoCount","_id":"6a492977-b1ba-4a4e-b401-0634653e636b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"resupplyTrigger":{"_propertyPath":"Soldier.ammoResupplyTrigger","_name":"resupplyTrigger","_id":"940ced5d-7eb6-477b-8d70-2200e14f2d5c","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"AmmoMax":{"_propertyPath":"Soldier.AmmoMax","_name":"AmmoMax","_id":"8e794fb7-f458-4900-907a-3c6b87d2a127","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"TargetAmmo":{"_name":"TargetAmmo","_id":"5b73893d-422f-4cf0-819a-a555e6944c92","$type":"NodeCanvas.Framework.Variable`1[[AmmoSupply,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences: []
   _serializedVariables:
   - _json: '{"_propertyPath":"Soldier.targetPosition","_name":"targetPosition","_id":"d5a6b750-15a1-4ab8-8c61-11f9c7503411","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
   - _json: '{"_name":"Target","_id":"013f0fd4-0952-46f9-a2d9-3a0592bcd2d6","$type":"NodeCanvas.Framework.Variable`1[[Destroyable,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references: []
-  - _json: '{"_name":"TargetAmmo","_id":"a5da6d2d-e3d6-4604-8c76-1219c77945f9","$type":"NodeCanvas.Framework.Variable`1[[Cargo,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
   - _json: '{"_propertyPath":"Soldier.AmmoCount","_name":"AmmoCount","_id":"6a492977-b1ba-4a4e-b401-0634653e636b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
@@ -269,6 +284,9 @@ MonoBehaviour:
     _references: []
   - _json: '{"_propertyPath":"Soldier.AmmoMax","_name":"AmmoMax","_id":"8e794fb7-f458-4900-907a-3c6b87d2a127","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_name":"TargetAmmo","_id":"5b73893d-422f-4cf0-819a-a555e6944c92","$type":"NodeCanvas.Framework.Variable`1[[AmmoSupply,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
 --- !u!65 &3756354949714678628
 BoxCollider:

@@ -20,7 +20,7 @@ namespace NodeCanvas.Tasks.Actions
 		{			
 			//TODO: Optimizations required (try 3 x 100 soldiers) 
 			IEnumerable<Collider> colliders = Physics.OverlapSphere(agent.transform.position, radius, layerMask, QueryTriggerInteraction.Collide)
-				.Where(c => c.GetComponent<ITeam>().Team != agent.Team)
+				.Where(c => c.GetComponent<ITeam>().Team != agent.Team && !c.GetComponent<Destroyable>().IsDestroyed)
 				.OrderBy(c => Distance.Manhattan2D(c.transform.position, agent.transform.position));
 
 			if (colliders.Count() > 0)
