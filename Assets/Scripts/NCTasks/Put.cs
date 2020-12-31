@@ -21,7 +21,8 @@ namespace NodeCanvas.Tasks.Actions
 			else 
 			{
 				agent.cargo.SetParent(null);
-				storage?.Put(agent.cargo);
+				if (storage)
+					storage.Put(agent.cargo);
 				agent.cargo = null;
 				EndAction(true);
 			}
