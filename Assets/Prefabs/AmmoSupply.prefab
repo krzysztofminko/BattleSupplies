@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 7508275760240586299}
   - component: {fileID: 7508275760240586298}
   - component: {fileID: 7508275760240586292}
+  - component: {fileID: 8525078010694435504}
   - component: {fileID: 4807753931271000802}
   m_Layer: 14
   m_Name: Crate
@@ -392,9 +393,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _available: 1
-  _ammoCount: 100
-  ammoMax: 100
-  ammoBar: {fileID: 5226891949794709558}
+--- !u!114 &8525078010694435504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508275760240586295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7409aa827c47aac4d93e95382862e838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _count: 30
+  max: 30
+  uiBar: {fileID: 5226891949794709558}
 --- !u!208 &4807753931271000802
 NavMeshObstacle:
   m_ObjectHideFlags: 0

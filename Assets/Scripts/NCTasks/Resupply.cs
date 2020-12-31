@@ -7,7 +7,7 @@ namespace NodeCanvas.Tasks.Actions
 	[Category("Soldier")]
 	public class Resupply : ActionTask<Soldier>
 	{
-		public BBParameter<Cargo> cargo;
+		public BBParameter<AmmoSupply> ammoSupply;
 		public BBParameter<int> count = 1;
 		public BBParameter<float> delay = 1;
 
@@ -18,10 +18,10 @@ namespace NodeCanvas.Tasks.Actions
 		{
 			timer = 0;
 
-			realCount = Mathf.Clamp(count.value, 0 ,cargo.value.AmmoCount);
+			realCount = Mathf.Clamp(count.value, 0, ammoSupply.value.Count);
 			if (realCount > 0)
 			{
-				cargo.value.AmmoCount -= realCount;
+				ammoSupply.value.Count -= realCount;
 			}
 			else
 			{
