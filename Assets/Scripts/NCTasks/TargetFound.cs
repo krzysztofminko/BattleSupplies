@@ -18,7 +18,8 @@ namespace NodeCanvas.Tasks.Actions
 
 		protected override bool OnCheck()
 		{			
-			//TODO: Optimizations required (try 3 x 100 soldiers) 
+			//TODO: Optimizations required (try 3 x 100 soldiers)
+			// Squad object should call OverlapSphere once, instead of calling by every Soldier
 			IEnumerable<Collider> colliders = Physics.OverlapSphere(agent.transform.position, radius, layerMask, QueryTriggerInteraction.Collide)
 				.Where(c => c.GetComponent<ITeam>().Team != agent.Team && !c.GetComponent<Destroyable>().IsDestroyed)
 				.OrderBy(c => Distance.Manhattan2D(c.transform.position, agent.transform.position));
