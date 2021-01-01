@@ -113,6 +113,7 @@ public class Soldier : MonoBehaviour, ITeam
         SetRagdoll(true);
         if (squad)
             squad.RemoveSoldier(this);
+        gameObject.layer = LayerMask.NameToLayer("DyingSoldier");
     }
 
     private void SetRagdoll(bool active)
