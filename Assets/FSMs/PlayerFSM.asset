@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f945e777233a59f4aba40aeca29093a6, type: 3}
   m_Name: PlayerFSM
   m_EditorClassIdentifier: 
-  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"waitTime":{"_value":0.1},"$type":"NodeCanvas.Tasks.Actions.Wait"}]},"_name":"Init","_position":{"x":330.0,"y":-346.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"enabled":{"_value":true},"$type":"NodeCanvas.Tasks.Actions.MovePlayer"},{"offset":{"_value":{"y":1.0,"z":1.0}},"radius":{"_value":1.0},"layerMask":{"_value":{"value":24832}},"triggersInteraction":2,"returnedGameObject":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.Select"}]},"_name":"Move
+  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"waitTime":{"_value":0.1},"$type":"NodeCanvas.Tasks.Actions.Wait"}]},"_name":"Init","_position":{"x":330.0,"y":-346.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"enabled":{"_value":true},"$type":"NodeCanvas.Tasks.Actions.MovePlayer"},{"offset":{"_value":{"y":1.0,"z":1.0}},"radius":{"_value":1.0},"layerMask":{"_value":{"value":155904}},"triggersInteraction":2,"returnedGameObject":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.Select"}]},"_name":"Move
     on foot","_position":{"x":455.0,"y":56.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"_vehicle":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.ControlVehicle"}]},"_name":"Control
     Vehicle","_position":{"x":742.6671,"y":357.3337},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"_pickable":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.Pick"}]},"_name":"Pick","_position":{"x":183.0,"y":347.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[{"_storage":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.Put"}]},"_position":{"x":181.0,"y":-210.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"CarriedCargo","_targetVariableID":"eecf9a1b-243f-49a6-8f1c-e514e4a85a1a"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[Cargo,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"checkedObject":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Conditions.IsNotNullAndHasComponent`1[[VehiclePhysics.Vehicle,
@@ -25,7 +25,7 @@ MonoBehaviour:
     _version: 3.09
     _category: 
     _comments: 
-    _translation: {x: -316, y: 113}
+    _translation: {x: -221, y: 231}
     _zoomFactor: 1
   _haltSerialization: 0
 #---GRAPH_START---
@@ -75,7 +75,7 @@ MonoBehaviour:
 #                        },
 #                        "layerMask": {
 #                            "_value": {
-#                                "value": 24832
+#                                "value": 155904
 #                            }
 #                        },
 #                        "triggersInteraction": 2,
