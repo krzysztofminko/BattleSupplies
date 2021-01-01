@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -7,6 +8,8 @@ public class Cargo : MonoBehaviour, IPickable
     [SerializeField, ReadOnly]
     private bool _available = true;
     public bool Available { get => _available; private set => _available = value; }
+
+    public Action<bool> onSetParent;
 
     public Cargo Pick(Transform parentTo)
     {
@@ -27,5 +30,6 @@ public class Cargo : MonoBehaviour, IPickable
             transform.position = hitInfo.point;
         }
         GetComponent<Collider>().enabled = Available = !parent;
+        onSetParent?.Invoke(parent);
     }
 }
