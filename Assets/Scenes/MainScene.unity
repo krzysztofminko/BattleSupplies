@@ -3919,6 +3919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Squad3
       objectReference: {fileID: 0}
+    - target: {fileID: 4794440542694828399, guid: 6d2c837884c2fc84ea112fae49eea01e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4794440542694828400, guid: 6d2c837884c2fc84ea112fae49eea01e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -84.70084
@@ -4188,6 +4192,10 @@ PrefabInstance:
     - target: {fileID: 4794440542694828399, guid: 6d2c837884c2fc84ea112fae49eea01e, type: 3}
       propertyPath: m_Name
       value: Squad2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794440542694828399, guid: 6d2c837884c2fc84ea112fae49eea01e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4794440542694828400, guid: 6d2c837884c2fc84ea112fae49eea01e, type: 3}
       propertyPath: m_LocalPosition.x

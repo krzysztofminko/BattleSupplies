@@ -30,20 +30,21 @@ public class Storage : MonoBehaviour
 		}
 	}
 
-	public Parentable Remove()
+	public Parentable Remove(Parentable obj = null)
 	{
-		Slot slot = list.LastOrDefault(s => s.obj);
+		Debug.Log("Remove " + obj, this);
+		Slot slot = obj? list.FirstOrDefault(s => s.obj == obj) : list.LastOrDefault(s => s.obj);
 		if (slot == null)
 		{
-			Debug.LogError("Can't Remove antyhing from empty Storage.", this);
+			Debug.LogError("Nothing to remove.", this);
 			return null;
 		}
 		else
 		{
-			Parentable obj = slot.obj;
+			slot.obj.Parent = null;
+			Parentable tmp = slot.obj;
 			slot.obj = null;
-			obj.Parent = null;
-			return obj;
+			return tmp;
 		}
 	}
 }
