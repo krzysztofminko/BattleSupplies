@@ -40,6 +40,8 @@ public class Soldier : MonoBehaviour, ITeam
     private ProgressBar ammoBar;
 
     [SerializeField]
+    private Rigidbody ragdollCenter;
+    [SerializeField]
     private List<Rigidbody> ragdollParts;
 
     [ReadOnly]
@@ -114,15 +116,26 @@ public class Soldier : MonoBehaviour, ITeam
         if (squad)
             squad.RemoveSoldier(this);
         gameObject.layer = LayerMask.NameToLayer("DyingSoldier");
+        gameObject.AddComponent<DyingSoldier>();
+        nmAgent.enabled = fsmOwner.enabled = animator.enabled = false;
     }
 
-    private void SetRagdoll(bool active)
+    public void SetRagdoll(bool active)
     {
-        nmAgent.enabled = fsmOwner.enabled = animator.enabled = !active;
         for (int i = 0; i < ragdollParts.Count; i++)
         {
             ragdollParts[i].isKinematic = !active;
             ragdollParts[i].GetComponent<Collider>().enabled = active;
+        }
+    }
+
+    public void FreezeRagdollCenter(bool freeze)
+    {
+        if (ragdollCenter)
+        {
+            if (freeze)
+                ragdollCenter.transform.localPosition = Vector3.zero;
+            ragdollCenter.constraints = freeze ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.None;
         }
     }
 }

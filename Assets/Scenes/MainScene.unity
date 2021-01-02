@@ -2146,6 +2146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedBlackboard: '{"_variables":{"Selected":{"_name":"Selected","_id":"f00aa46f-43be-4f9d-9510-201b60679dfe","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"CarriedObject":{"_propertyPath":"Carrier.carriedObject","_name":"CarriedObject","_id":"0ae9c43a-5f20-4c58-a730-a46e94f8106d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"ObjectToLoad":{"_name":"ObjectToLoad","_id":"c9da72b8-88b0-438d-a1af-ddf4eb31c83c","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences: []
   _serializedVariables:
@@ -2153,6 +2154,9 @@ MonoBehaviour:
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
   - _json: '{"_propertyPath":"Carrier.carriedObject","_name":"CarriedObject","_id":"0ae9c43a-5f20-4c58-a730-a46e94f8106d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
+  - _json: '{"_name":"ObjectToLoad","_id":"c9da72b8-88b0-438d-a1af-ddf4eb31c83c","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
 --- !u!114 &1093338987
