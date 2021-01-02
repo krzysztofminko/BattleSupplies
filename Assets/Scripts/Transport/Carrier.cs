@@ -6,5 +6,5 @@ public class Carrier : MonoBehaviour
 	[Required]
 	public Transform anchor;
 	[ReadOnly]
-	public Cargo cargo;
+	public Transform carriedObject;
 }

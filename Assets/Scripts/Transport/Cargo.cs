@@ -1,31 +1,24 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Collider))]
-public class Cargo : MonoBehaviour, IPickable
+public class Cargo : MonoBehaviour, IPickable, ILoadable
 {
     [SerializeField, ReadOnly]
     private bool _available = true;
     public bool Available { get => _available; private set => _available = value; }
 
-    public Cargo Pick(Transform parentTo)
+    public void OnLoad() => OnPick();
+    public void OnUnload() => OnPut();
+
+    public void OnPick()
     {
-        SetParent(parentTo);
-        return this;
+        GetComponent<Collider>().enabled = GetComponent<NavMeshObstacle>().enabled = Available = false;
     }
 
-    public void SetParent(Transform parent)
+    public void OnPut()
     {
-        transform.parent = parent;
-        if (parent)
-        {
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.identity;
-        }
-        else if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, LayerMask.GetMask("Ground")))
-        {
-            transform.position = hitInfo.point;
-        }
-        GetComponent<Collider>().enabled = Available = !parent;
+        GetComponent<Collider>().enabled = GetComponent<NavMeshObstacle>().enabled = Available = true;
     }
 }

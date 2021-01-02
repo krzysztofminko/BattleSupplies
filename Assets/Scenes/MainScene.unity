@@ -1501,17 +1501,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - anchor: {fileID: 747061498}
-    cargo: {fileID: 0}
+    obj: {fileID: 0}
   - anchor: {fileID: 2112806982}
-    cargo: {fileID: 0}
+    obj: {fileID: 0}
   - anchor: {fileID: 423343275}
-    cargo: {fileID: 0}
+    obj: {fileID: 0}
   - anchor: {fileID: 1504642338}
-    cargo: {fileID: 0}
+    obj: {fileID: 0}
   - anchor: {fileID: 1774916297}
-    cargo: {fileID: 0}
+    obj: {fileID: 0}
   - anchor: {fileID: 1418365657}
-    cargo: {fileID: 0}
+    obj: {fileID: 0}
 --- !u!208 &841897582
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2145,15 +2145,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedBlackboard: '{"_variables":{"Selected":{"_name":"Selected","_id":"f00aa46f-43be-4f9d-9510-201b60679dfe","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"CarriedCargo":{"_propertyPath":"Carrier.cargo","_name":"CarriedCargo","_id":"eecf9a1b-243f-49a6-8f1c-e514e4a85a1a","$type":"NodeCanvas.Framework.Variable`1[[Cargo,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"CarriedObject":{"_propertyPath":"Carrier.carriedObject","_name":"CarriedObject","_id":"0ae9c43a-5f20-4c58-a730-a46e94f8106d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences: []
   _serializedVariables:
   - _json: '{"_name":"Selected","_id":"f00aa46f-43be-4f9d-9510-201b60679dfe","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
-  - _json: '{"_propertyPath":"Carrier.cargo","_name":"CarriedCargo","_id":"eecf9a1b-243f-49a6-8f1c-e514e4a85a1a","$type":"NodeCanvas.Framework.Variable`1[[Cargo,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+  - _json: '{"_propertyPath":"Carrier.carriedObject","_name":"CarriedObject","_id":"0ae9c43a-5f20-4c58-a730-a46e94f8106d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
 --- !u!114 &1093338987
 MonoBehaviour:
@@ -2249,7 +2249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 2034741198}
-  cargo: {fileID: 0}
+  carriedObject: {fileID: 0}
 --- !u!54 &1093338992
 Rigidbody:
   m_ObjectHideFlags: 0

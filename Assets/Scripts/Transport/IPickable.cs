@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-
-public interface IPickable
+﻿public interface IPickable
 {
-	Cargo Pick(Transform parentTo);
+	void OnPick();
+	void OnPut();
 }
