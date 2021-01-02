@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class Carrier : MonoBehaviour
+public class Picker : MonoBehaviour
 {
 	[Required]
 	public Transform anchor;
 	[ReadOnly]
-	public Cargo cargo;
+	public Parentable picked;
 }

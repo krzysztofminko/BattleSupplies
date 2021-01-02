@@ -4,7 +4,7 @@ using System;
 using Sirenix.OdinInspector;
 using System.Linq;
 
-public class Storage : MonoBehaviour, IPickable
+public class Storage : MonoBehaviour
 {
 	[Serializable]
 	public class Slot
@@ -12,39 +12,38 @@ public class Storage : MonoBehaviour, IPickable
 		[Required]
 		public Transform anchor;
 		[ReadOnly]
-		public Cargo cargo;
+		public Parentable obj;
 	}
 
 	[SerializeField, TableList(AlwaysExpanded = true)]
 	private List<Slot> list = new List<Slot>(1);
 
-	public bool HasEmptySlot => list.FirstOrDefault(s => !s.cargo) != null;
+	public bool HasEmptySlot => list.FirstOrDefault(s => !s.obj) != null;
 
-	public bool Put(Cargo cargo)
+	public void Add(Parentable obj)
 	{
-		Slot slot = list.FirstOrDefault(s => !s.cargo);
+		Slot slot = list.FirstOrDefault(s => !s.obj);
 		if (slot != null)
 		{
-			slot.cargo = cargo;
-			cargo.SetParent(slot.anchor);
-			return true;
+			slot.obj = obj;
+			obj.Parent = slot.anchor;
 		}
-		return false;
 	}
 
-	public Cargo Pick(Transform parentTo)
+	public Parentable Remove()
 	{
-		Slot slot = list.LastOrDefault(s => s.cargo);
+		Slot slot = list.LastOrDefault(s => s.obj);
 		if (slot == null)
 		{
+			Debug.LogError("Can't Remove antyhing from empty Storage.", this);
 			return null;
 		}
 		else
 		{
-			Cargo cargo = slot.cargo;
-			slot.cargo = null;
-			cargo.SetParent(parentTo);
-			return cargo;
+			Parentable obj = slot.obj;
+			slot.obj = null;
+			obj.Parent = null;
+			return obj;
 		}
 	}
 }

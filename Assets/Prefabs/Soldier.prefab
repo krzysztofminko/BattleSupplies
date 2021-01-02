@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 3756354949714678628}
   - component: {fileID: 4858180268741126022}
   - component: {fileID: 6954724890576248260}
+  - component: {fileID: -8663012529811709787}
   m_Layer: 15
   m_Name: Soldier
   m_TagString: Untagged
@@ -335,6 +336,19 @@ MonoBehaviour:
   weaponAnchor: {fileID: 0}
   _weapon: {fileID: 0}
   instantiatedWeapon: {fileID: 0}
+--- !u!114 &-8663012529811709787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3697569766898659259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1dc01844e7d6f42acdaa987f578719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 0}
 --- !u!1 &3751146322473388060
 GameObject:
   m_ObjectHideFlags: 0

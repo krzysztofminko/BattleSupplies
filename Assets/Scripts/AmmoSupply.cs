@@ -1,6 +1,5 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AmmoSupply : MonoBehaviour
 {
@@ -32,4 +31,9 @@ public class AmmoSupply : MonoBehaviour
         if (uiBar)
             uiBar.Value = 1f * Count / max;
     }
+
+    private void OnEnable() => GetComponent<Parentable>().onSetParent += AmmoSupply_onSetParent;
+    private void OnDisable() => GetComponent<Parentable>().onSetParent -= AmmoSupply_onSetParent;
+
+    private void AmmoSupply_onSetParent(Parentable parentable) => GetComponent<Collider>().enabled = !parentable.Parent;
 }

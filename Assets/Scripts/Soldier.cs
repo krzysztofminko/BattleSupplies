@@ -116,7 +116,7 @@ public class Soldier : MonoBehaviour, ITeam
         if (squad)
             squad.RemoveSoldier(this);
         gameObject.layer = LayerMask.NameToLayer("DyingSoldier");
-        gameObject.AddComponent<Cargo>().onSetParent += cargo_onSetParent;
+        GetComponent<Parentable>().onSetParent += Soldier_onSetParent;
     }
 
     public void Revive()    //Unused, untested
@@ -124,11 +124,14 @@ public class Soldier : MonoBehaviour, ITeam
         SetRagdoll(false);
         nmAgent.enabled = fsmOwner.enabled = animator.enabled = true;
         gameObject.layer = LayerMask.NameToLayer("Soldier");
-        gameObject.GetComponent<Cargo>().onSetParent -= cargo_onSetParent;
-        Destroy(GetComponent<Cargo>());
+        GetComponent<Parentable>().onSetParent -= Soldier_onSetParent;
     }
 
-    private void cargo_onSetParent(bool parent) => SetRagdoll(!parent);
+    private void Soldier_onSetParent(Parentable parentable)
+    {
+        GetComponent<Collider>().enabled = !parentable.Parent;
+        SetRagdoll(!parentable.Parent);
+    }
 
     private void SetRagdoll(bool active)
     {
