@@ -1501,17 +1501,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - anchor: {fileID: 747061498}
-    obj: {fileID: 0}
+    cargo: {fileID: 0}
   - anchor: {fileID: 2112806982}
-    obj: {fileID: 0}
+    cargo: {fileID: 0}
   - anchor: {fileID: 423343275}
-    obj: {fileID: 0}
+    cargo: {fileID: 0}
   - anchor: {fileID: 1504642338}
-    obj: {fileID: 0}
+    cargo: {fileID: 0}
   - anchor: {fileID: 1774916297}
-    obj: {fileID: 0}
+    cargo: {fileID: 0}
   - anchor: {fileID: 1418365657}
-    obj: {fileID: 0}
+    cargo: {fileID: 0}
 --- !u!208 &841897582
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2145,14 +2145,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedBlackboard: '{"_variables":{"Selected":{"_name":"Selected","_id":"f00aa46f-43be-4f9d-9510-201b60679dfe","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Picked":{"_propertyPath":"Picker.picked","_name":"Picked","_id":"0e4f69c9-a02f-45de-a7eb-6f0635a9dcfd","$type":"NodeCanvas.Framework.Variable`1[[Parentable,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"CarriedCargo":{"_propertyPath":"Carrier.cargo","_name":"CarriedCargo","_id":"eecf9a1b-243f-49a6-8f1c-e514e4a85a1a","$type":"NodeCanvas.Framework.Variable`1[[Cargo,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences: []
   _serializedVariables:
   - _json: '{"_name":"Selected","_id":"f00aa46f-43be-4f9d-9510-201b60679dfe","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
-  - _json: '{"_propertyPath":"Picker.picked","_name":"Picked","_id":"0e4f69c9-a02f-45de-a7eb-6f0635a9dcfd","$type":"NodeCanvas.Framework.Variable`1[[Parentable,
+  - _json: '{"_propertyPath":"Carrier.cargo","_name":"CarriedCargo","_id":"eecf9a1b-243f-49a6-8f1c-e514e4a85a1a","$type":"NodeCanvas.Framework.Variable`1[[Cargo,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
 --- !u!114 &1093338987
@@ -2249,7 +2249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 2034741198}
-  picked: {fileID: 0}
+  cargo: {fileID: 0}
 --- !u!54 &1093338992
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3821,7 +3821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2034741198}
   m_Layer: 0
-  m_Name: pickerAnchor
+  m_Name: carrierAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

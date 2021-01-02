@@ -4,23 +4,22 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions
 {
-	[Category("Picker")]
-	public class Pick : ActionTask<Picker>
+	[Category("Player")]
+	public class Pick : ActionTask<Carrier>
 	{
-		public BBParameter<Parentable> target;
-		public BBParameter<Storage> storage;
+		public BBParameter<IPickable> _pickable;
+		private IPickable pickable;
 
 		protected override void OnExecute()
 		{
-			if (target.value == null && storage.value == null)
+			if (_pickable.value == null)
 			{
-				Debug.LogError("Target and Storage are null. One of them is required.", agent);
+				Debug.LogError("Target is null.", agent);
 			}
 			else
 			{
-				agent.picked = target.value ? target.value : storage.value.Remove();
-				agent.picked.Parent = agent.anchor;
-
+				pickable = _pickable.value;
+				agent.cargo = pickable.Pick(agent.anchor);
 				EndAction(true);
 			}
 		}

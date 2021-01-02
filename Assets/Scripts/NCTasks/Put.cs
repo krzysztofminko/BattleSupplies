@@ -4,25 +4,26 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions
 {
-	[Category("Picker")]
-	public class Put : ActionTask<Picker>
+	[Category("Player")]
+	public class Put : ActionTask<Carrier>
 	{
 		[Tooltip("Optional")]
-		public BBParameter<Storage> storage;
+		public BBParameter<Storage> _storage;
+		private Storage storage;
 
 		protected override void OnExecute()
 		{
-			if (!agent.picked)
+			storage = _storage.value;
+			if (!agent.cargo)
 			{
 				Debug.LogError($"{agent} is not carrying anything.", agent);
 			}
 			else 
 			{
-				agent.picked.Parent = null;
-				if (storage.value)
-					storage.value.Add(agent.picked);
-				agent.picked = null;
-
+				agent.cargo.SetParent(null);
+				if (storage)
+					storage.Put(agent.cargo);
+				agent.cargo = null;
 				EndAction(true);
 			}
 		}
