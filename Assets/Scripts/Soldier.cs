@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-using VehiclePhysics;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(FSMOwner))]
 public class Soldier : MonoBehaviour, ITeam
@@ -48,8 +47,6 @@ public class Soldier : MonoBehaviour, ITeam
     public Squad squad;
     [ReadOnly]
     public Vector3 targetPosition;
-    [ReadOnly]
-    public Vehicle targetVehicle;
 
     [SerializeField, ReadOnly]
     private int _team;
@@ -71,7 +68,6 @@ public class Soldier : MonoBehaviour, ITeam
         animator = GetComponent<Animator>();
         fsmOwner = GetComponent<FSMOwner>();
         SetRagdoll(false);
-        GetComponent<Parentable>().onSetParent += Soldier_onSetParent;
     }
 
     public MoveStatus Move(Transform target, float distance = 1) => Move(target.position, distance);
@@ -120,8 +116,7 @@ public class Soldier : MonoBehaviour, ITeam
         if (squad)
             squad.RemoveSoldier(this);
         gameObject.layer = LayerMask.NameToLayer("DyingSoldier");
-        GetComponent<Parentable>().onSetParent += DyingSoldier_onSetParent;
-        GetComponent<Parentable>().onSetParent -= Soldier_onSetParent;
+        GetComponent<Parentable>().onSetParent += Soldier_onSetParent;
     }
 
     public void Revive()    //Unused, untested
@@ -129,22 +124,13 @@ public class Soldier : MonoBehaviour, ITeam
         SetRagdoll(false);
         nmAgent.enabled = fsmOwner.enabled = animator.enabled = true;
         gameObject.layer = LayerMask.NameToLayer("Soldier");
-        GetComponent<Parentable>().onSetParent -= DyingSoldier_onSetParent;
-        GetComponent<Parentable>().onSetParent += Soldier_onSetParent;
-    }
-
-    private void DyingSoldier_onSetParent(Parentable parentable)
-    {
-        GetComponent<Collider>().enabled = !parentable.Parent;
-        SetRagdoll(!parentable.Parent);
+        GetComponent<Parentable>().onSetParent -= Soldier_onSetParent;
     }
 
     private void Soldier_onSetParent(Parentable parentable)
     {
-        GetComponent<Collider>().enabled = nmAgent.enabled = !parentable.Parent;
-        if (!parentable.Parent)
-            targetVehicle = null;
-
+        GetComponent<Collider>().enabled = !parentable.Parent;
+        SetRagdoll(!parentable.Parent);
     }
 
     private void SetRagdoll(bool active)

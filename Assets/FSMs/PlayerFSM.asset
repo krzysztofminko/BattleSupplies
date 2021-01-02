@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"waitTime":{"_value":0.1},"$type":"NodeCanvas.Tasks.Actions.Wait"}]},"_name":"Init","_position":{"x":330.0,"y":-346.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"enabled":{"_value":true},"$type":"NodeCanvas.Tasks.Actions.MovePlayer"},{"offset":{"_value":{"y":1.0,"z":1.0}},"radius":{"_value":1.0},"layerMask":{"_value":{"value":155904}},"triggersInteraction":2,"returnedGameObject":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.Select"}]},"_name":"Move
     on foot","_position":{"x":455.0,"y":56.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"storage":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.Put"}]},"_position":{"x":183.0,"y":-192.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"_vehicle":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.ControlVehicle"}]},"_name":"Control
-    Vehicle","_position":{"x":729.6671,"y":-194.6663},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[{"layerMask":{"value":32768},"overrideAgent":{"_type":"VehiclePhysics.Vehicle","_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.Horn"}]},"_name":"Horn","_position":{"x":927.0,"y":-346.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[{"target":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"storage":{},"$type":"NodeCanvas.Tasks.Actions.Pick"}]},"_name":"Pick
-    from ground","_position":{"x":175.0,"y":357.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_actionList":{"executionMode":1,"actions":[{"target":{},"storage":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.Pick"}]},"_name":"Pick
-    from storage","_position":{"x":726.0,"y":353.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"6"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Picked","_targetVariableID":"0e4f69c9-a02f-45de-a7eb-6f0635a9dcfd"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[Parentable,
+    Vehicle","_position":{"x":729.6671,"y":-194.6663},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[{"target":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"storage":{},"$type":"NodeCanvas.Tasks.Actions.Pick"}]},"_name":"Pick
+    from ground","_position":{"x":175.0,"y":357.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[{"target":{},"storage":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Actions.Pick"}]},"_name":"Pick
+    from storage","_position":{"x":726.0,"y":353.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Picked","_targetVariableID":"0e4f69c9-a02f-45de-a7eb-6f0635a9dcfd"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[Parentable,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"buttonName":{"_value":"Pick"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Picked","_targetVariableID":"0e4f69c9-a02f-45de-a7eb-6f0635a9dcfd"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[Parentable,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"checkedObject":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Conditions.IsNotNullAndHasComponent`1[[VehiclePhysics.Vehicle,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"buttonName":{"_value":"Enter"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Picked","_targetVariableID":"0e4f69c9-a02f-45de-a7eb-6f0635a9dcfd"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[Parentable,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"checkedObject":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Conditions.IsNotNullAndHasComponent`1[[Parentable,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"buttonName":{"_value":"Pick"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Picked","_targetVariableID":"0e4f69c9-a02f-45de-a7eb-6f0635a9dcfd"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[Parentable,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"buttonName":{"_value":"Pick"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Picked","_targetVariableID":"0e4f69c9-a02f-45de-a7eb-6f0635a9dcfd"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[Parentable,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"checkedObject":{"_name":"Selected","_targetVariableID":"f00aa46f-43be-4f9d-9510-201b60679dfe"},"$type":"NodeCanvas.Tasks.Conditions.IsNotNullAndHasComponent`1[[Storage,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"buttonName":{"_value":"Pick"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"buttonName":{"_value":"Enter"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"buttonName":{"_value":"Horn"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"buttonName":{"_value":"Pick"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"buttonName":{"_value":"Enter"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _objectReferences: []
   _graphSource:
     _version: 3.09
     _category: 
     _comments: 
-    _translation: {x: -230, y: 192}
+    _translation: {x: -341, y: 52}
     _zoomFactor: 1
   _haltSerialization: 0
 #---GRAPH_START---
@@ -145,31 +145,6 @@ MonoBehaviour:
 #                "executionMode": 1,
 #                "actions": [
 #                    {
-#                        "layerMask": {
-#                            "value": 32768
-#                        },
-#                        "overrideAgent": {
-#                            "_type": "VehiclePhysics.Vehicle",
-#                            "_name": "Selected",
-#                            "_targetVariableID": "f00aa46f-43be-4f9d-9510-201b60679dfe"
-#                        },
-#                        "$type": "NodeCanvas.Tasks.Actions.Horn"
-#                    }
-#                ]
-#            },
-#            "_name": "Horn",
-#            "_position": {
-#                "x": 927.0,
-#                "y": -346.0
-#            },
-#            "$type": "NodeCanvas.StateMachines.ActionState",
-#            "$id": "4"
-#        },
-#        {
-#            "_actionList": {
-#                "executionMode": 1,
-#                "actions": [
-#                    {
 #                        "target": {
 #                            "_name": "Selected",
 #                            "_targetVariableID": "f00aa46f-43be-4f9d-9510-201b60679dfe"
@@ -187,7 +162,7 @@ MonoBehaviour:
 #                "y": 357.0
 #            },
 #            "$type": "NodeCanvas.StateMachines.ActionState",
-#            "$id": "5"
+#            "$id": "4"
 #        },
 #        {
 #            "_actionList": {
@@ -211,7 +186,7 @@ MonoBehaviour:
 #                "y": 353.0
 #            },
 #            "$type": "NodeCanvas.StateMachines.ActionState",
-#            "$id": "6"
+#            "$id": "5"
 #        }
 #    ],
 #    "connections": [
@@ -325,7 +300,7 @@ MonoBehaviour:
 #                "$ref": "1"
 #            },
 #            "_targetNode": {
-#                "$ref": "5"
+#                "$ref": "4"
 #            },
 #            "$type": "NodeCanvas.StateMachines.FSMConnection"
 #        },
@@ -362,7 +337,7 @@ MonoBehaviour:
 #                "$ref": "1"
 #            },
 #            "_targetNode": {
-#                "$ref": "6"
+#                "$ref": "5"
 #            },
 #            "$type": "NodeCanvas.StateMachines.FSMConnection"
 #        },
@@ -391,32 +366,8 @@ MonoBehaviour:
 #            "$type": "NodeCanvas.StateMachines.FSMConnection"
 #        },
 #        {
-#            "_condition": {
-#                "buttonName": {
-#                    "_value": "Horn"
-#                },
-#                "$type": "NodeCanvas.Tasks.Conditions.CheckButtonInput"
-#            },
-#            "_sourceNode": {
-#                "$ref": "3"
-#            },
-#            "_targetNode": {
-#                "$ref": "4"
-#            },
-#            "$type": "NodeCanvas.StateMachines.FSMConnection"
-#        },
-#        {
 #            "_sourceNode": {
 #                "$ref": "4"
-#            },
-#            "_targetNode": {
-#                "$ref": "3"
-#            },
-#            "$type": "NodeCanvas.StateMachines.FSMConnection"
-#        },
-#        {
-#            "_sourceNode": {
-#                "$ref": "5"
 #            },
 #            "_targetNode": {
 #                "$ref": "1"
@@ -425,7 +376,7 @@ MonoBehaviour:
 #        },
 #        {
 #            "_sourceNode": {
-#                "$ref": "6"
+#                "$ref": "5"
 #            },
 #            "_targetNode": {
 #                "$ref": "1"
