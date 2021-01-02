@@ -1,7 +1,6 @@
 ﻿using NodeCanvas.StateMachines;
 using NodeCanvas.Tasks.Actions;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -112,26 +111,14 @@ public class Soldier : MonoBehaviour, ITeam
     public void Die()
     {
         SetRagdoll(true);
-        nmAgent.enabled = fsmOwner.enabled = animator.enabled = false;
         if (squad)
             squad.RemoveSoldier(this);
         gameObject.layer = LayerMask.NameToLayer("DyingSoldier");
-        gameObject.AddComponent<Cargo>().onSetParent += cargo_onSetParent;
     }
-
-    public void Revive()    //Unused, untested
-    {
-        SetRagdoll(false);
-        nmAgent.enabled = fsmOwner.enabled = animator.enabled = true;
-        gameObject.layer = LayerMask.NameToLayer("Soldier");
-        gameObject.GetComponent<Cargo>().onSetParent -= cargo_onSetParent;
-        Destroy(GetComponent<Cargo>());
-    }
-
-    private void cargo_onSetParent(bool parent) => SetRagdoll(!parent);
 
     private void SetRagdoll(bool active)
     {
+        nmAgent.enabled = fsmOwner.enabled = animator.enabled = !active;
         for (int i = 0; i < ragdollParts.Count; i++)
         {
             ragdollParts[i].isKinematic = !active;
