@@ -3,7 +3,7 @@ using ParadoxNotion.Design;
 
 namespace NodeCanvas.Tasks.Conditions
 {
-	[Category("Cargo")]
+	[Category("Transport")]
 	public class CargoAvailable : ConditionTask
 	{
 		public BBParameter<Cargo> cargo;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions
 {
-	[Category("Player")]
+	[Category("Transport")]
 	public class Pick : ActionTask<Carrier>
 	{
 		public BBParameter<IPickable> _pickable;
