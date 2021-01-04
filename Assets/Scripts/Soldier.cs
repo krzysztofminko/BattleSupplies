@@ -7,7 +7,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(FSMOwner))]
-public class Soldier : MonoBehaviour, ITeam
+public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
 {
     public enum MoveStatus { Running, Success, Failure}
 
@@ -116,7 +116,6 @@ public class Soldier : MonoBehaviour, ITeam
         if (squad)
             squad.RemoveSoldier(this);
         gameObject.layer = LayerMask.NameToLayer("DyingSoldier");
-        gameObject.AddComponent<DyingSoldier>();
         nmAgent.enabled = fsmOwner.enabled = animator.enabled = false;
     }
 
@@ -137,5 +136,22 @@ public class Soldier : MonoBehaviour, ITeam
                 ragdollCenter.transform.localPosition = Vector3.zero;
             ragdollCenter.constraints = freeze ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.None;
         }
+    }
+
+    public void OnLoad() => OnPick();
+    public void OnUnload() => OnPut();
+
+    public void OnPick()
+    {
+        //GetComponent<Soldier>().SetRagdoll(false);
+        GetComponent<Soldier>().FreezeRagdollCenter(true);
+        GetComponent<Collider>().enabled = false;
+    }
+
+    public void OnPut()
+    {
+        //GetComponent<Soldier>().SetRagdoll(true);
+        GetComponent<Soldier>().FreezeRagdollCenter(false);
+        GetComponent<Collider>().enabled = true;
     }
 }
