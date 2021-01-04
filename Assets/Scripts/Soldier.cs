@@ -110,6 +110,7 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
             nmAgent.SetDestination(immediately ? transform.position : (transform.position + transform.forward * nmAgent.stoppingDistance));
     }
 
+    //TODO: Figure out how to separate DyingSoldier's ragdoll object from Soldier object (copying bone's positions and rotations from original, to newly spawned ragdoll?)
     public void Die()
     {
         SetRagdoll(true);
