@@ -10,18 +10,26 @@ namespace NodeCanvas.Tasks.Actions
 	{
 		public BBParameter<Container> container;
 		public BBParameter<Transform> objectToLoad;
+		public bool containerCanBeNull;
 
 		protected override void OnExecute()
 		{
-			if (!container.value)
+			if (!containerCanBeNull && !container.value)
 				Debug.LogError("container is null", ownerSystemAgent);
 			if (!objectToLoad.value)
 				Debug.LogError("objectToLoad is null", ownerSystemAgent);
 
-			bool result = container.value.Load(objectToLoad.value);
-			objectToLoad.value.GetComponents<ILoadable>().ForEach(l => l.OnLoad());
+			if (container.value)
+			{
+				bool result = container.value.Load(objectToLoad.value);
+				objectToLoad.value.GetComponents<ILoadable>().ForEach(l => l.OnLoad());
 
-			EndAction(result);
+				EndAction(result);
+			}
+			else
+			{
+				EndAction(false);
+			}
 		}
 	}
 }
