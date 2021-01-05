@@ -10,7 +10,7 @@ namespace NodeCanvas.Tasks.Actions
 	[Category("Soldier")]
 	public class TargetFound : ConditionTask<Soldier>
 	{
-		public float radius = 10;
+		public BBParameter<float> radius = 10;
 		public LayerMask layerMask;
 		public BBParameter<Destroyable> target;
 
@@ -20,7 +20,7 @@ namespace NodeCanvas.Tasks.Actions
 		{			
 			//TODO: Optimizations required (try 3 x 100 soldiers)
 			// Squad object should call OverlapSphere once, instead of calling by every Soldier
-			IEnumerable<Collider> colliders = Physics.OverlapSphere(agent.transform.position, radius, layerMask, QueryTriggerInteraction.Collide)
+			IEnumerable<Collider> colliders = Physics.OverlapSphere(agent.transform.position, radius.value, layerMask, QueryTriggerInteraction.Collide)
 				.Where(c => c.GetComponent<ITeam>().Team != agent.Team && !c.GetComponent<Destroyable>().IsDestroyed)
 				.OrderBy(c => Distance.Manhattan2D(c.transform.position, agent.transform.position));
 
@@ -33,7 +33,7 @@ namespace NodeCanvas.Tasks.Actions
 		public override void OnDrawGizmosSelected()
 		{
 			if (agent != null)
-				Gizmos.DrawWireSphere(agent.transform.position, radius); 
+				Gizmos.DrawWireSphere(agent.transform.position, radius.value); 
 		}
 	}
 }
