@@ -120,39 +120,38 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
         nmAgent.enabled = fsmOwner.enabled = animator.enabled = false;
     }
 
-    public void SetRagdoll(bool active)
+    public void SetRagdoll(bool active, bool freezeRagdollCenter = false)
     {
         for (int i = 0; i < ragdollParts.Count; i++)
         {
             ragdollParts[i].isKinematic = !active;
             ragdollParts[i].GetComponent<Collider>().enabled = active;
         }
-    }
-
-    public void FreezeRagdollCenter(bool freeze)
-    {
-        if (ragdollCenter)
+        if (active && ragdollCenter)
         {
-            if (freeze)
+            if (freezeRagdollCenter)
                 ragdollCenter.transform.localPosition = Vector3.zero;
-            ragdollCenter.constraints = freeze ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.None;
+            ragdollCenter.constraints = freezeRagdollCenter ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.None;
         }
     }
 
-    public void OnLoad() => OnPick();
+    public void OnLoad()
+    {
+        GetComponent<Soldier>().SetRagdoll(false);
+        GetComponent<Collider>().enabled = false;
+    }
+
     public void OnUnload() => OnPut();
 
     public void OnPick()
     {
-        //GetComponent<Soldier>().SetRagdoll(false);
-        GetComponent<Soldier>().FreezeRagdollCenter(true);
+        GetComponent<Soldier>().SetRagdoll(true, true);
         GetComponent<Collider>().enabled = false;
     }
 
     public void OnPut()
     {
-        //GetComponent<Soldier>().SetRagdoll(true);
-        GetComponent<Soldier>().FreezeRagdollCenter(false);
+        GetComponent<Soldier>().SetRagdoll(true, false);
         GetComponent<Collider>().enabled = true;
     }
 }
