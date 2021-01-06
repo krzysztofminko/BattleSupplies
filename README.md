@@ -1,5 +1,6 @@
 # BattleSupplies
 Collect ammo crates, transport them with your truck and deliver to battlefields. Your troops need more ammo to win! 
+[![Click here to see video!](https://img.youtube.com/vi/WrvK9hc8w20/0.jpg)](https://www.youtube.com/watch?v=WrvK9hc8w20)
 ![](Screens/anim01.gif)
 
 ## Note
