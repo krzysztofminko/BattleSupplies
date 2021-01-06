@@ -12,7 +12,7 @@ Click here to see some new footage:
 ## Implemented features
 
 ### Player
-- carrying, loading and unloading ammo crates
+- carrying, loading and unloading ammo crates and dying soldiers
 - driving truck
 
 ### Soldiers
@@ -21,9 +21,10 @@ Click here to see some new footage:
 - reaching target squad position
 - shooting at enemy soldiers
 - resupplying ammo from nearby crates
+- changing to ragdoll when critically wounded
 
 ### Other
-- controller support
+- partial controller support
 
 ## Used tools
 - [Node Canvas](https://assetstore.unity.com/packages/tools/visual-scripting/nodecanvas-14914) for AI FSMs  
