@@ -7,6 +7,11 @@ public class Player : MonoBehaviour, ITeam
 	private int _team;
 	public int Team { get => _team; set => _team = value; }
 
+	private void Awake()
+	{
+		ProgressBar.DisableAll();
+	}
+
 	private void Update()
 	{
 		if (Input.GetButtonDown("ShowInfo"))
