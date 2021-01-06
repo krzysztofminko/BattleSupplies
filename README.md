@@ -3,7 +3,7 @@ Collect ammo crates, transport them with your truck and deliver to battlefields.
 
 ![](Screens/anim01.gif)
   
-Click here to see some footage:  
+Click here to see some new footage:  
 [![Click here to see some footage!](https://img.youtube.com/vi/WrvK9hc8w20/0.jpg)](https://www.youtube.com/watch?v=WrvK9hc8w20)
 
 ## Note
