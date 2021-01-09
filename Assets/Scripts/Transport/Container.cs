@@ -18,6 +18,7 @@ public class Container : MonoBehaviour
 	[SerializeField, TableList(AlwaysExpanded = true)]
 	private List<Slot> list = new List<Slot>(1);
 
+	public bool IsEmpty => list.LastOrDefault(s => s.obj) == null;
 	public bool HasEmptySlot => list.FirstOrDefault(s => !s.obj) != null;
 	public Transform GetLastObject => list.LastOrDefault(s => s.obj)?.obj;
 
@@ -38,17 +39,18 @@ public class Container : MonoBehaviour
 	public Transform Unload(Transform obj = null)
 	{
 		Slot slot = obj ? list.FirstOrDefault(s => s.obj == obj) : list.LastOrDefault(s => s.obj);
-		if (slot == null)
+		if (obj && slot == null)
 		{
-			Debug.LogError("Nothing to unload. " + (obj ? "Object not in container." : "Container is empty."), this);
+			Debug.LogError("Nothing to unload. Object not in container.", this);
 			return null;
 		}
-		else
+		else if (slot != null)
 		{
 			obj = slot.obj;
 			slot.obj = null;
 			obj.SetParent(null);
 			return obj;
 		}
+		return null;
 	}
 }

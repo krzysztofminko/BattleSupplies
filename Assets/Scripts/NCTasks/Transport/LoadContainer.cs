@@ -21,10 +21,16 @@ namespace NodeCanvas.Tasks.Actions
 
 			if (container.value)
 			{
-				bool result = container.value.Load(objectToLoad.value);
-				objectToLoad.value.GetComponents<ILoadable>().ForEach(l => l.OnLoad());
+				if (container.value.Load(objectToLoad.value))
+				{
+					objectToLoad.value.GetComponents<ILoadable>().ForEach(l => l.OnLoad());
+					EndAction(true);
+				}
+				else
+				{
+					EndAction(false);
+				}
 
-				EndAction(result);
 			}
 			else
 			{
