@@ -9,5 +9,5 @@ public class FaceCamera : MonoBehaviour
 
     private void LateUpdate() => SetDirection();
 
-    private void SetDirection() => transform.forward = Camera.main.transform.forward * (invert ? -1 : 1);
+    private void SetDirection() => transform.forward = Camera.main ? Camera.main.transform.forward * (invert ? -1 : 1) : transform.forward;
 }
