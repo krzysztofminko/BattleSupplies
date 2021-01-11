@@ -60,6 +60,8 @@ namespace NodeCanvas.Tasks.Actions
 						locked = true;
 						Debug.Log("Hold > 1");
 						Debug.Log("Get out!");
+						//REFACTOR: Extract exiting/Unload to FSM
+						//REFACTOR: Setting Soldier.targetVehicle to order soldiers sucks!
 						Container container = vehicle.GetComponent<Container>();
 						Transform objectInContainer = container.GetObject(o => o.GetComponent<Soldier>());
 						if (objectInContainer)
