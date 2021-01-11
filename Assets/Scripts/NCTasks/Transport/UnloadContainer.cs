@@ -19,8 +19,6 @@ namespace NodeCanvas.Tasks.Actions
 				Debug.LogError("container is null", ownerSystemAgent);
 
 			returnedObject.value = container.value.Unload(objectToUnload.value);
-			if (returnedObject.value)
-				returnedObject.value.GetComponents<ILoadable>().ForEach(l => l.OnUnload());
 
 			EndAction(returnedObject.value);
 		}

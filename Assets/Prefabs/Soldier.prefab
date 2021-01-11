@@ -166,6 +166,7 @@ MonoBehaviour:
   ragdollParts: []
   squad: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
+  targetVehicle: {fileID: 0}
   _team: 0
 --- !u!114 &6769432225110996819
 MonoBehaviour:
@@ -269,8 +270,12 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"AmmoMax":{"_propertyPath":"Soldier.AmmoMax","_name":"AmmoMax","_id":"8e794fb7-f458-4900-907a-3c6b87d2a127","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"TargetAmmo":{"_name":"TargetAmmo","_id":"5b73893d-422f-4cf0-819a-a555e6944c92","$type":"NodeCanvas.Framework.Variable`1[[AmmoSupply,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"ShootingRange":{"_value":30.0,"_name":"ShootingRange","_id":"3ca11144-3e55-4f27-b8d2-71a5200efc88","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
-  _objectReferences: []
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetVehicle":{"_propertyPath":"Soldier.targetVehicle","_name":"targetVehicle","_id":"8aad0153-4210-40b5-83b8-7e7cbf6dd160","$type":"NodeCanvas.Framework.Variable`1[[VehiclePhysics.Vehicle,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Self":{"_value":1,"_name":"Self","_id":"8ff75857-e75b-4c8d-b8ec-19d2d056f781","$type":"NodeCanvas.Framework.Variable`1[[Soldier,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 3697569766898659260}
   _serializedVariables:
   - _json: '{"_propertyPath":"Soldier.targetPosition","_name":"targetPosition","_id":"d5a6b750-15a1-4ab8-8c61-11f9c7503411","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
@@ -293,6 +298,14 @@ MonoBehaviour:
   - _json: '{"_value":30.0,"_name":"ShootingRange","_id":"3ca11144-3e55-4f27-b8d2-71a5200efc88","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
+  - _json: '{"_propertyPath":"Soldier.targetVehicle","_name":"targetVehicle","_id":"8aad0153-4210-40b5-83b8-7e7cbf6dd160","$type":"NodeCanvas.Framework.Variable`1[[VehiclePhysics.Vehicle,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
+  - _json: '{"_value":1,"_name":"Self","_id":"8ff75857-e75b-4c8d-b8ec-19d2d056f781","$type":"NodeCanvas.Framework.Variable`1[[Soldier,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 3697569766898659260}
 --- !u!65 &3756354949714678628
 BoxCollider:
   m_ObjectHideFlags: 0

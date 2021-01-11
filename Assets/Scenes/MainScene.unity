@@ -1444,6 +1444,7 @@ MonoBehaviour:
   - transform: {fileID: 59089987}
     exit: {fileID: 1818329055}
     user: {fileID: 0}
+  _team: -1
 --- !u!114 &841897578
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace NodeCanvas.Tasks.Actions
 {
 	//TODO: Create separate action EnterVehicle, passengers also need it
 	[Category("Player")]
-	public class ControlVehicle : ActionTask<Transform>
+	public class ControlVehicle : ActionTask<Player>
 	{
 		public BBParameter<ExtendedVehicle> _vehicle;
 		private ExtendedVehicle vehicle;
@@ -31,11 +31,12 @@ namespace NodeCanvas.Tasks.Actions
 				seat = vehicle.seats.FirstOrDefault(s => !s.user);
 				if (seat != null)
 				{
-					agent.parent = seat.transform;
-					agent.localPosition = Vector3.zero;
-					agent.localRotation = Quaternion.identity;
+					agent.transform.parent = seat.transform;
+					agent.transform.localPosition = Vector3.zero;
+					agent.transform.localRotation = Quaternion.identity;
 					characterController.enabled = false; 
 					vehicle.handBrake = false;
+					vehicle.Team = agent.Team;
 				}
 				else
 				{
@@ -71,12 +72,13 @@ namespace NodeCanvas.Tasks.Actions
 
 		protected override void OnStop()
 		{
-			agent.parent = null;
+			agent.transform.parent = null;
 			if (seat != null)
 			{
-				agent.position = seat.exit.position;
-				agent.rotation = seat.exit.rotation;
+				agent.transform.position = seat.exit.position;
+				agent.transform.rotation = seat.exit.rotation;
 			}
+			vehicle.Team = -1;
 			vehicle.handBrake = true;
 			characterController.enabled = true;
 		}

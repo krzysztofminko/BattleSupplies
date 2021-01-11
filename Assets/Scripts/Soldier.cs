@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using VehiclePhysics;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(FSMOwner))]
 public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
@@ -48,6 +49,8 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
     public Squad squad;
     [ReadOnly]
     public Vector3 targetPosition;
+    [ReadOnly]
+    public VehiclePhysics.Vehicle targetVehicle;
 
     [SerializeField, ReadOnly]
     private int _team;
@@ -139,6 +142,7 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
     {
         GetComponent<Soldier>().SetRagdoll(false);
         GetComponent<Collider>().enabled = false;
+        nmAgent.enabled = false;
     }
 
     public void OnUnload() => OnPut();
@@ -146,12 +150,14 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
     public void OnPick()
     {
         GetComponent<Soldier>().SetRagdoll(true, true);
-        GetComponent<Collider>().enabled = false;
+        GetComponent<Collider>().enabled = false; 
+        nmAgent.enabled = false;
     }
 
     public void OnPut()
     {
         GetComponent<Soldier>().SetRagdoll(true, false);
         GetComponent<Collider>().enabled = true;
+        nmAgent.enabled = true;
     }
 }
