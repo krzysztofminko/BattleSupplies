@@ -18,11 +18,14 @@ namespace NodeCanvas.Tasks.Actions
 			{
 				agent.carriedObject.transform.parent = null;
 				agent.carriedObject.GetComponents<IPickable>().ForEach(p => p.OnPut());
-				if (Physics.Raycast(agent.carriedObject.position, Vector3.down, out RaycastHit hitInfo, LayerMask.GetMask("Ground")))
+				/*if (Physics.Raycast(agent.carriedObject.position, Vector3.down, out RaycastHit hitInfo, LayerMask.GetMask("Ground")))
 				{
 					agent.carriedObject.position = hitInfo.point;
-				}
+				}*/
 				agent.carriedObject = null;
+
+				agent.GetComponent<Animator>().SetBool("Carry", false);
+
 				EndAction(true);
 			}
 		}

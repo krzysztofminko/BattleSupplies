@@ -24,6 +24,8 @@ namespace NodeCanvas.Tasks.Actions
 				target.value.transform.localRotation = Quaternion.identity;
 				target.value.GetComponents<IPickable>().ForEach(p => p.OnPick());
 
+				agent.GetComponent<Animator>().SetBool("Carry", true);
+
 				EndAction(true);
 			}
 		}

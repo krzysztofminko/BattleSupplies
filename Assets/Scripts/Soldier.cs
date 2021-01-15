@@ -113,7 +113,7 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
             nmAgent.SetDestination(immediately ? transform.position : (transform.position + transform.forward * nmAgent.stoppingDistance));
     }
 
-    //TODO: Figure out how to separate DyingSoldier's ragdoll object from Soldier object (copying bone's positions and rotations from original, to newly spawned ragdoll?)
+    //TODO: Separate DyingSoldier's ragdoll object from Soldier object (copying bone's positions and rotations from original, to newly spawned ragdoll?)
     public void Die()
     {
         SetRagdoll(true);
@@ -123,8 +123,17 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
         nmAgent.enabled = fsmOwner.enabled = animator.enabled = false;
     }
 
+    [SerializeField, HideInInspector]
+    private Vector3 savedRagdollCenterLocalPosition;
+    [SerializeField, HideInInspector]
+    private bool resetRagdollCenterLocalPosition;
     public void SetRagdoll(bool active, bool freezeRagdollCenter = false)
     {
+        if (!active && resetRagdollCenterLocalPosition)
+        {
+            ragdollCenter.transform.localPosition = savedRagdollCenterLocalPosition;
+            resetRagdollCenterLocalPosition = false;
+        }
         for (int i = 0; i < ragdollParts.Count; i++)
         {
             ragdollParts[i].isKinematic = !active;
@@ -133,7 +142,11 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
         if (active && ragdollCenter)
         {
             if (freezeRagdollCenter)
-                ragdollCenter.transform.localPosition = Vector3.zero;
+            {
+                savedRagdollCenterLocalPosition = ragdollCenter.transform.localPosition;
+                resetRagdollCenterLocalPosition = true;
+                ragdollCenter.transform.position = transform.position;
+            }
             ragdollCenter.constraints = freezeRagdollCenter ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.None;
         }
     }

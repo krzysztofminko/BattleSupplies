@@ -15,10 +15,12 @@ public class Cargo : MonoBehaviour, IPickable, ILoadable
     public void OnPick()
     {
         GetComponent<Collider>().enabled = GetComponent<NavMeshObstacle>().enabled = Available = false;
+        GetComponent<Rigidbody>().isKinematic = true;
     }
 
     public void OnPut()
     {
         GetComponent<Collider>().enabled = GetComponent<NavMeshObstacle>().enabled = Available = true;
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 }
