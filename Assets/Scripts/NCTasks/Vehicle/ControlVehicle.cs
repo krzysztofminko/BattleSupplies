@@ -1,12 +1,10 @@
 using NodeCanvas.Framework;
-using ParadoxNotion;
 using ParadoxNotion.Design;
 using System.Linq;
 using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions
 {
-	//TODO: Create separate action EnterVehicle, passengers also need it
 	[Category("Player")]
 	public class ControlVehicle : ActionTask<Player>
 	{
@@ -15,7 +13,6 @@ namespace NodeCanvas.Tasks.Actions
 
 		private ExtendedVehicle.Seat seat;
 
-		//TODO: Create Driver class and move characterController there?
 		[GetFromAgent]
 		private CharacterController characterController;
 
