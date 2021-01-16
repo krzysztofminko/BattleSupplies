@@ -10,6 +10,7 @@ namespace NodeCanvas.Tasks.Actions
 	public class Shoot : ActionTask<Soldier>
 	{
 		public BBParameter<Destroyable> target;
+		public BBParameter<float> range = 10;
 		public BBParameter<float> minDelay = 1;
 		public BBParameter<float> maxDelay = 2;
 		public BBParameter<float> animationDelay;
@@ -35,6 +36,9 @@ namespace NodeCanvas.Tasks.Actions
 			timer += Time.deltaTime;
 
 			if (target.value && target.value.IsDestroyed)
+				target.value = null;
+
+			if (target.value && (target.value.transform.position - agent.transform.position).sqrMagnitude > range.value * range.value)
 				target.value = null;
 
 			if (target.value)

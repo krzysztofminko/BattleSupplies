@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 3756354949714678628}
   - component: {fileID: 4858180268741126022}
   - component: {fileID: 6954724890576248260}
-  - component: {fileID: -8663012529811709787}
+  - component: {fileID: 497414944713847897}
   m_Layer: 15
   m_Name: Soldier
   m_TagString: Untagged
@@ -163,11 +163,11 @@ MonoBehaviour:
   _ammoMax: 20
   ammoResupplyTrigger: 10
   ammoBar: {fileID: 3455477836348515159}
-  ragdollParts: []
   squad: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   targetVehicle: {fileID: 0}
   _team: 0
+  _isDying: 0
 --- !u!114 &6769432225110996819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,9 +269,13 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"resupplyTrigger":{"_propertyPath":"Soldier.ammoResupplyTrigger","_name":"resupplyTrigger","_id":"940ced5d-7eb6-477b-8d70-2200e14f2d5c","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"AmmoMax":{"_propertyPath":"Soldier.AmmoMax","_name":"AmmoMax","_id":"8e794fb7-f458-4900-907a-3c6b87d2a127","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"TargetAmmo":{"_name":"TargetAmmo","_id":"5b73893d-422f-4cf0-819a-a555e6944c92","$type":"NodeCanvas.Framework.Variable`1[[AmmoSupply,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"TargetVehicle":{"_propertyPath":"Soldier.targetVehicle","_name":"TargetVehicle","_id":"1e35026e-b0f4-4298-906a-c97fb3663d08","$type":"NodeCanvas.Framework.Variable`1[[VehiclePhysics.Vehicle,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"ShootingRange":{"_value":30.0,"_name":"ShootingRange","_id":"3ca11144-3e55-4f27-b8d2-71a5200efc88","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetVehicle":{"_propertyPath":"Soldier.targetVehicle","_name":"targetVehicle","_id":"8aad0153-4210-40b5-83b8-7e7cbf6dd160","$type":"NodeCanvas.Framework.Variable`1[[VehiclePhysics.Vehicle,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Self":{"_value":1,"_name":"Self","_id":"8ff75857-e75b-4c8d-b8ec-19d2d056f781","$type":"NodeCanvas.Framework.Variable`1[[Soldier,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
-  _objectReferences: []
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 3697569766898659260}
   _serializedVariables:
   - _json: '{"_propertyPath":"Soldier.targetPosition","_name":"targetPosition","_id":"d5a6b750-15a1-4ab8-8c61-11f9c7503411","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
@@ -291,9 +295,17 @@ MonoBehaviour:
   - _json: '{"_name":"TargetAmmo","_id":"5b73893d-422f-4cf0-819a-a555e6944c92","$type":"NodeCanvas.Framework.Variable`1[[AmmoSupply,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
-  - _json: '{"_propertyPath":"Soldier.targetVehicle","_name":"TargetVehicle","_id":"1e35026e-b0f4-4298-906a-c97fb3663d08","$type":"NodeCanvas.Framework.Variable`1[[VehiclePhysics.Vehicle,
+  - _json: '{"_value":30.0,"_name":"ShootingRange","_id":"3ca11144-3e55-4f27-b8d2-71a5200efc88","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_propertyPath":"Soldier.targetVehicle","_name":"targetVehicle","_id":"8aad0153-4210-40b5-83b8-7e7cbf6dd160","$type":"NodeCanvas.Framework.Variable`1[[VehiclePhysics.Vehicle,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
+  - _json: '{"_value":1,"_name":"Self","_id":"8ff75857-e75b-4c8d-b8ec-19d2d056f781","$type":"NodeCanvas.Framework.Variable`1[[Soldier,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 3697569766898659260}
 --- !u!65 &3756354949714678628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -341,7 +353,7 @@ MonoBehaviour:
   weaponAnchor: {fileID: 0}
   _weapon: {fileID: 0}
   instantiatedWeapon: {fileID: 0}
---- !u!114 &-8663012529811709787
+--- !u!114 &497414944713847897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -350,10 +362,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3697569766898659259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f1dc01844e7d6f42acdaa987f578719, type: 3}
+  m_Script: {fileID: 11500000, guid: 6268abb99b9e53f44afb2ec5c81cdbf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parent: {fileID: 0}
+  ragdollRoot: {fileID: 0}
+  ragdollParts: []
+  savedRagdollLocalPosition: {x: 0, y: 0, z: 0}
+  resetRagdollLocalPosition: 0
 --- !u!1 &3751146322473388060
 GameObject:
   m_ObjectHideFlags: 0

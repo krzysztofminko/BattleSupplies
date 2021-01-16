@@ -28,9 +28,6 @@ public class Squad : MonoBehaviour
     [SerializeField, TableList(AlwaysExpanded = true)]
     private List<SoldierCount> soldierCounts;
 
-    //[SerializeField, ListDrawerSettings(CustomAddFunction = "AddWaypoint", CustomRemoveElementFunction = ("RemoveWaypoint"), AlwaysAddDefaultValue = true)]
-    //private List<Transform> waypoints = new List<Transform>();
-
     [ShowInInspector, ReadOnly]
     private readonly List<Soldier> soldiers = new List<Soldier>();
 

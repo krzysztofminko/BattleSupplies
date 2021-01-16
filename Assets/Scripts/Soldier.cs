@@ -1,15 +1,12 @@
 ﻿using NodeCanvas.StateMachines;
-using NodeCanvas.Tasks.Actions;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 using VehiclePhysics;
 
-[RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(FSMOwner))]
-public class Soldier : MonoBehaviour, ITeam
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(FSMOwner)), RequireComponent(typeof(Ragdoll))]
+public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
 {
     public enum MoveStatus { Running, Success, Failure}
 
@@ -38,11 +35,8 @@ public class Soldier : MonoBehaviour, ITeam
     [SerializeField, Min(0)]
     public int ammoResupplyTrigger = 10;
 
-    [SerializeField]
+    [SerializeField, Required]
     private ProgressBar ammoBar;
-
-    [SerializeField]
-    private List<Rigidbody> ragdollParts;
 
     [ReadOnly]
     public Squad squad;
@@ -54,10 +48,14 @@ public class Soldier : MonoBehaviour, ITeam
     [SerializeField, ReadOnly]
     private int _team;
     public int Team { get => _team; set => _team = value; }
-    
+    [SerializeField, ReadOnly]
+    private bool _isDying;
+    public bool IsDying { get => _isDying; private set => _isDying = value; }
+
     private NavMeshAgent nmAgent;
     private Animator animator;
     private FSMOwner fsmOwner;
+    private Ragdoll ragdoll;
 
     private void OnValidate()
     {
@@ -70,8 +68,8 @@ public class Soldier : MonoBehaviour, ITeam
         nmAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         fsmOwner = GetComponent<FSMOwner>();
-        SetRagdoll(false);
-        GetComponent<Parentable>().onSetParent += Soldier_onSetParent;
+        ragdoll = GetComponent<Ragdoll>();
+        ragdoll.SetRagdoll(false);
     }
 
     public MoveStatus Move(Transform target, float distance = 1) => Move(target.position, distance);
@@ -115,44 +113,35 @@ public class Soldier : MonoBehaviour, ITeam
 
     public void Die()
     {
-        SetRagdoll(true);
-        nmAgent.enabled = fsmOwner.enabled = animator.enabled = false;
+        IsDying = true;
+        ragdoll.SetRagdoll(true);
         if (squad)
             squad.RemoveSoldier(this);
         gameObject.layer = LayerMask.NameToLayer("DyingSoldier");
-        GetComponent<Parentable>().onSetParent += DyingSoldier_onSetParent;
-        GetComponent<Parentable>().onSetParent -= Soldier_onSetParent;
+        nmAgent.enabled = fsmOwner.enabled = animator.enabled = false;
     }
 
-    public void Revive()    //Unused, untested
+    public void OnLoad()
     {
-        SetRagdoll(false);
-        nmAgent.enabled = fsmOwner.enabled = animator.enabled = true;
-        gameObject.layer = LayerMask.NameToLayer("Soldier");
-        GetComponent<Parentable>().onSetParent -= DyingSoldier_onSetParent;
-        GetComponent<Parentable>().onSetParent += Soldier_onSetParent;
+        ragdoll.SetRagdoll(false, true);
+        GetComponent<Collider>().enabled = false;
+        nmAgent.enabled = false;
     }
 
-    private void DyingSoldier_onSetParent(Parentable parentable)
+    public void OnUnload() => OnPut();
+
+    public void OnPick()
     {
-        GetComponent<Collider>().enabled = !parentable.Parent;
-        SetRagdoll(!parentable.Parent);
+        ragdoll.SetRagdoll(true, true);
+        GetComponent<Collider>().enabled = false;
+        nmAgent.enabled = false;
     }
 
-    private void Soldier_onSetParent(Parentable parentable)
+    public void OnPut()
     {
-        GetComponent<Collider>().enabled = nmAgent.enabled = !parentable.Parent;
-        if (!parentable.Parent)
-            targetVehicle = null;
-
-    }
-
-    private void SetRagdoll(bool active)
-    {
-        for (int i = 0; i < ragdollParts.Count; i++)
-        {
-            ragdollParts[i].isKinematic = !active;
-            ragdollParts[i].GetComponent<Collider>().enabled = active;
-        }
+        //TODO: Fix ragdoll positioned far from selecting collider
+        ragdoll.SetRagdoll(true, false);
+        GetComponent<Collider>().enabled = true; 
+        nmAgent.enabled = !IsDying;
     }
 }

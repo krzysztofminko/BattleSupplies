@@ -16,7 +16,7 @@ public class Destroyable : MonoBehaviour
         get => _hp;
         set
         {
-            if (_hp != value)
+            if (_hp != Mathf.Clamp(value, 0, 100))
             {
                 _hp = Mathf.Clamp(value, 0, 100);
                 if (healthBar)
