@@ -1,10 +1,8 @@
 ﻿using NodeCanvas.StateMachines;
-using NodeCanvas.Tasks.Actions;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 using VehiclePhysics;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(FSMOwner))]
@@ -37,11 +35,11 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
     [SerializeField, Min(0)]
     public int ammoResupplyTrigger = 10;
 
-    [SerializeField]
+    [SerializeField, Required]
     private ProgressBar ammoBar;
 
-    [SerializeField]
-    private Rigidbody ragdollCenter;
+    [SerializeField, Required]
+    private Transform ragdollRoot;
     [SerializeField]
     private List<Rigidbody> ragdollParts;
 
@@ -50,12 +48,20 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
     [ReadOnly]
     public Vector3 targetPosition;
     [ReadOnly]
-    public VehiclePhysics.Vehicle targetVehicle;
+    public Vehicle targetVehicle;
 
     [SerializeField, ReadOnly]
     private int _team;
     public int Team { get => _team; set => _team = value; }
-    
+    [SerializeField, ReadOnly]
+    private bool _isDying;
+    public bool IsDying { get => _isDying; private set => _isDying = value; }
+
+    [SerializeField, HideInInspector]
+    private Vector3 savedRagdollLocalPosition;
+    [SerializeField, HideInInspector]
+    private bool resetRagdollLocalPosition;
+
     private NavMeshAgent nmAgent;
     private Animator animator;
     private FSMOwner fsmOwner;
@@ -113,9 +119,9 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
             nmAgent.SetDestination(immediately ? transform.position : (transform.position + transform.forward * nmAgent.stoppingDistance));
     }
 
-    //TODO: Separate DyingSoldier's ragdoll object from Soldier object (copying bone's positions and rotations from original, to newly spawned ragdoll?)
     public void Die()
     {
+        IsDying = true;
         SetRagdoll(true);
         if (squad)
             squad.RemoveSoldier(this);
@@ -123,31 +129,28 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
         nmAgent.enabled = fsmOwner.enabled = animator.enabled = false;
     }
 
-    [SerializeField, HideInInspector]
-    private Vector3 savedRagdollCenterLocalPosition;
-    [SerializeField, HideInInspector]
-    private bool resetRagdollCenterLocalPosition;
-    public void SetRagdoll(bool active, bool freezeRagdollCenter = false)
+    //TODO: Create Ragdoll component
+    public void SetRagdoll(bool active, bool groundRoot = false)
     {
-        if (!active && resetRagdollCenterLocalPosition)
+        if (!active && resetRagdollLocalPosition)
         {
-            ragdollCenter.transform.localPosition = savedRagdollCenterLocalPosition;
-            resetRagdollCenterLocalPosition = false;
+            ragdollRoot.localPosition = savedRagdollLocalPosition;
+            resetRagdollLocalPosition = false;
         }
         for (int i = 0; i < ragdollParts.Count; i++)
         {
             ragdollParts[i].isKinematic = !active;
             ragdollParts[i].GetComponent<Collider>().enabled = active;
         }
-        if (active && ragdollCenter)
+        if (active)
         {
-            if (freezeRagdollCenter)
+            if (groundRoot)
             {
-                savedRagdollCenterLocalPosition = ragdollCenter.transform.localPosition;
-                resetRagdollCenterLocalPosition = true;
-                ragdollCenter.transform.position = transform.position;
+                savedRagdollLocalPosition = ragdollRoot.localPosition;
+                resetRagdollLocalPosition = true;
+                ragdollRoot.position = transform.position;
             }
-            ragdollCenter.constraints = freezeRagdollCenter ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.None;
+            ragdollRoot.GetComponent<Rigidbody>().constraints = groundRoot ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.None;
         }
     }
 
@@ -156,6 +159,7 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
         GetComponent<Soldier>().SetRagdoll(false);
         GetComponent<Collider>().enabled = false;
         nmAgent.enabled = false;
+        ragdollRoot.localPosition = Vector3.zero;
     }
 
     public void OnUnload() => OnPut();
@@ -163,14 +167,14 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
     public void OnPick()
     {
         GetComponent<Soldier>().SetRagdoll(true, true);
-        GetComponent<Collider>().enabled = false; 
+        GetComponent<Collider>().enabled = false;
         nmAgent.enabled = false;
     }
 
     public void OnPut()
     {
         GetComponent<Soldier>().SetRagdoll(true, false);
-        GetComponent<Collider>().enabled = true;
-        nmAgent.enabled = true;
+        GetComponent<Collider>().enabled = true; 
+        nmAgent.enabled = !IsDying;
     }
 }

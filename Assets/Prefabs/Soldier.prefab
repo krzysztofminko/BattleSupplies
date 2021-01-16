@@ -162,12 +162,16 @@ MonoBehaviour:
   _ammoMax: 20
   ammoResupplyTrigger: 10
   ammoBar: {fileID: 3455477836348515159}
-  ragdollCenter: {fileID: 0}
+  spine: {fileID: 0}
+  ragdollRoot: {fileID: 0}
   ragdollParts: []
   squad: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   targetVehicle: {fileID: 0}
   _team: 0
+  _isDying: 0
+  savedSpineLocalPosition: {x: 0, y: 0, z: 0}
+  resetSpineLocalPosition: 0
 --- !u!114 &6769432225110996819
 MonoBehaviour:
   m_ObjectHideFlags: 0
