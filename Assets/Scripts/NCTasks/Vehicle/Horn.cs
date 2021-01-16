@@ -1,6 +1,5 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-using Sirenix.Utilities;
 using System.Linq;
 using UnityEngine;
 using VehiclePhysics;
@@ -16,7 +15,6 @@ namespace NodeCanvas.Tasks.Actions
 		public BBParameter<float> radius = 10;
 		public LayerMask layerMask;
 		private float buttonPressedTime;
-		private float buttonHoldDuration;
 		private bool locked;
 
 
@@ -25,8 +23,6 @@ namespace NodeCanvas.Tasks.Actions
 			vehicle = _vehicle.value;
 		}
 
-		//REFACTOR: Try to exctract pressed/held logic to some class?
-		//REFACTOR: Delete unnecessary comments
 		protected override void OnUpdate()
 		{
 			if (vehicle)
@@ -34,34 +30,28 @@ namespace NodeCanvas.Tasks.Actions
 				if (Input.GetButtonDown(buttonName.value))
 				{
 					buttonPressedTime = Time.realtimeSinceStartup;
-					Debug.Log("Down");
 				}
 				else if (Input.GetButtonUp(buttonName.value))
 				{
-					Debug.Log("Up");
+					//Call Soldier to enter
 					if (Time.realtimeSinceStartup - buttonPressedTime < 1 && !locked)
 					{
-						Debug.Log("Get in!");
 						Collider collider = Physics.OverlapSphere(agent.transform.position, radius.value, layerMask, QueryTriggerInteraction.Collide).FirstOrDefault(c => c.GetComponent<Soldier>().Team == agent.Team && !c.GetComponent<Soldier>().targetVehicle);
 						if (collider)
 						{
 							Soldier soldier = collider.GetComponent<Soldier>();
 							soldier.targetVehicle = vehicle;
-							Debug.Log(soldier, soldier);
 						}
 					}
 					locked = false;
 				}
 				else if(Input.GetButton(buttonName.value))
 				{
+					//Unload Soldier
 					if (Time.realtimeSinceStartup - buttonPressedTime > 1)
 					{
 						buttonPressedTime = Time.realtimeSinceStartup;
 						locked = true;
-						Debug.Log("Hold > 1");
-						Debug.Log("Get out!");
-						//REFACTOR: Extract exiting/Unload to FSM
-						//REFACTOR: Setting Soldier.targetVehicle to order soldiers sucks!
 						Container container = vehicle.GetComponent<Container>();
 						Transform objectInContainer = container.GetObject(o => o.GetComponent<Soldier>());
 						if (objectInContainer)
