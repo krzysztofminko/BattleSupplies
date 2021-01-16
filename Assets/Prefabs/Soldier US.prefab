@@ -1128,6 +1128,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[0]
+      value: 
+      objectReference: {fileID: 4801194663589757464}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[1]
+      value: 
+      objectReference: {fileID: 2249489324973297507}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[2]
+      value: 
+      objectReference: {fileID: 4971803695213870990}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[3]
+      value: 
+      objectReference: {fileID: 896496531406969159}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[4]
+      value: 
+      objectReference: {fileID: 696777894338447258}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[5]
+      value: 
+      objectReference: {fileID: 8173307370065356826}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[6]
+      value: 
+      objectReference: {fileID: 938789053817912214}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[7]
+      value: 
+      objectReference: {fileID: 3826859354380160768}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[8]
+      value: 
+      objectReference: {fileID: 2393349463170246896}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[9]
+      value: 
+      objectReference: {fileID: 1639263978643546465}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[10]
+      value: 
+      objectReference: {fileID: 1297921242783551879}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollRoot
+      value: 
+      objectReference: {fileID: 1703585114171599449}
     - target: {fileID: 3697569766898659259, guid: d401b021028bea04e953dbed74ca0715, type: 3}
       propertyPath: m_Name
       value: Soldier US

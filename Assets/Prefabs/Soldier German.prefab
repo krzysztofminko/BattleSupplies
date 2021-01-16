@@ -1064,6 +1064,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[0]
+      value: 
+      objectReference: {fileID: 2908758753809476404}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[1]
+      value: 
+      objectReference: {fileID: 496240408062254438}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[2]
+      value: 
+      objectReference: {fileID: 5759021979969001839}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[3]
+      value: 
+      objectReference: {fileID: 8079229610389954406}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[4]
+      value: 
+      objectReference: {fileID: 3730076417101348347}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[5]
+      value: 
+      objectReference: {fileID: 8140291605455789228}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[6]
+      value: 
+      objectReference: {fileID: 1458923073558372464}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[7]
+      value: 
+      objectReference: {fileID: 3486625701094720739}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[8]
+      value: 
+      objectReference: {fileID: 1003202850745759699}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[9]
+      value: 
+      objectReference: {fileID: 3783381928924383830}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollParts.Array.data[10]
+      value: 
+      objectReference: {fileID: 7505353799540670083}
+    - target: {fileID: 497414944713847897, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: ragdollRoot
+      value: 
+      objectReference: {fileID: 2108793274885607525}
     - target: {fileID: 3697569766898659258, guid: d401b021028bea04e953dbed74ca0715, type: 3}
       propertyPath: _serializedVariables.Array.size
       value: 9
