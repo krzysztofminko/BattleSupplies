@@ -1,5 +1,6 @@
 ﻿using NodeCanvas.StateMachines;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,6 +10,8 @@ using VehiclePhysics;
 public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
 {
     public enum MoveStatus { Running, Success, Failure}
+
+    public Action onDie;
 
     public Bullet amunition;
     
@@ -70,6 +73,8 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
         fsmOwner = GetComponent<FSMOwner>();
         ragdoll = GetComponent<Ragdoll>();
         ragdoll.SetRagdoll(false);
+
+        nmAgent.avoidancePriority = UnityEngine.Random.Range(1, 100);
     }
 
     public MoveStatus Move(Transform target, float distance = 1) => Move(target.position, distance);
@@ -119,6 +124,7 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
             squad.RemoveSoldier(this);
         gameObject.layer = LayerMask.NameToLayer("DyingSoldier");
         nmAgent.enabled = fsmOwner.enabled = animator.enabled = false;
+        onDie?.Invoke();
     }
 
     public void OnLoad()

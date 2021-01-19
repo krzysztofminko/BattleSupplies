@@ -44,6 +44,7 @@ public class Squad : MonoBehaviour
                 Soldier soldier = Instantiate(soldierCounts[i].soldier, transform.position + (transform.rotation * GetPositionInFormation(soldiers.Count, soldierCounts.Sum(s => s.count))), transform.rotation);
                 soldier.squad = this;
                 soldier.Team = team;
+                soldier.name += " " + sc;
                 soldiers.Add(soldier);
             }
 
@@ -124,9 +125,9 @@ public class Squad : MonoBehaviour
     private Vector3 GetPositionInFormation(int i, int total)
     {
         int cols = Mathf.FloorToInt(Mathf.Sqrt(total) * 2);
-        float spread = 2;
+        float spread = 4;
 
-        return new Vector3(i % cols - cols / 2, 0, -i / cols) * spread;
+        return new Vector3(i % cols - cols / 2, 0, -i / cols + total / cols / 2) * spread;
     }
 
     public void RemoveSoldier(Soldier soldier) => soldiers.Remove(soldier);    

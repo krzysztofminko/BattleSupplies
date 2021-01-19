@@ -272,6 +272,7 @@ MonoBehaviour:
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"ShootingRange":{"_value":30.0,"_name":"ShootingRange","_id":"3ca11144-3e55-4f27-b8d2-71a5200efc88","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetVehicle":{"_propertyPath":"Soldier.targetVehicle","_name":"targetVehicle","_id":"8aad0153-4210-40b5-83b8-7e7cbf6dd160","$type":"NodeCanvas.Framework.Variable`1[[VehiclePhysics.Vehicle,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Self":{"_value":1,"_name":"Self","_id":"8ff75857-e75b-4c8d-b8ec-19d2d056f781","$type":"NodeCanvas.Framework.Variable`1[[Soldier,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Cover":{"_name":"Cover","_id":"8497eaef-bb9f-4c0b-9a97-fc3d715604a1","$type":"NodeCanvas.Framework.Variable`1[[Cover,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences:
   - {fileID: 0}
@@ -306,6 +307,9 @@ MonoBehaviour:
     _references:
     - {fileID: 0}
     - {fileID: 3697569766898659260}
+  - _json: '{"_name":"Cover","_id":"8497eaef-bb9f-4c0b-9a97-fc3d715604a1","$type":"NodeCanvas.Framework.Variable`1[[Cover,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
 --- !u!65 &3756354949714678628
 BoxCollider:
   m_ObjectHideFlags: 0
