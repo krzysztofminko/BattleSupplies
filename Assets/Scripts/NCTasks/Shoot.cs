@@ -38,7 +38,7 @@ namespace NodeCanvas.Tasks.Actions
 			if (target.value && target.value.IsDestroyed)
 				target.value = null;
 
-			if (target.value && (target.value.transform.position - agent.transform.position).sqrMagnitude > range.value * range.value)
+			if (target.value && (target.value.transform.position - agent.transform.position).sqrMagnitude > (range.value + 1) * (range.value + 1))	// +1 (horizontal size of Soldier collider) to fix OverlapingSphere hitting only part of collider
 				target.value = null;
 
 			if (target.value)
@@ -81,7 +81,7 @@ namespace NodeCanvas.Tasks.Actions
 			}
 			else if(!shooted || timer > delay + animationDuration.value)
 			{
-				EndAction(true);
+				EndAction(false);
 			}
 		}
 	}
