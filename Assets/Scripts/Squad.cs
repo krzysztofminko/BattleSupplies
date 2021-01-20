@@ -23,6 +23,9 @@ public class Squad : MonoBehaviour
 
     public int team;
 
+    [SerializeField]
+    private float spread = 4;
+
     [SerializeField, ReadOnly]
     private int targetWaypoint;
     [SerializeField, TableList(AlwaysExpanded = true)]
@@ -71,6 +74,8 @@ public class Squad : MonoBehaviour
     
     private void Update()
     {
+        //Set next waypoint
+        //BUG: GetAvgPosition is not equal target waypoint position in some cases (soldiers.Count)
         if (targetWaypoint < waypointsGroup.waypoints.Count)
         {
             if (targetWaypoint + 1 < waypointsGroup.waypoints.Count && (GetAvgPosition() - waypointsGroup.waypoints[targetWaypoint].GetPosition()).sqrMagnitude < 10)
@@ -100,9 +105,10 @@ public class Squad : MonoBehaviour
     static void DrawGizmo(Squad squad, GizmoType gizmoType)
     {
         Gizmos.color = Color.yellow;
-        for (int i = 0; i < squad.soldierCounts.Sum(s => s.count); i++) 
+        int totalCount = squad.soldierCounts.Sum(s => s.count);
+        for (int i = 0; i < totalCount; i++) 
         {
-            Vector3 position = squad.transform.position + squad.transform.rotation * squad.GetPositionInFormation(i, squad.soldierCounts.Sum(s => s.count));
+            Vector3 position = squad.transform.position + squad.transform.rotation * squad.GetPositionInFormation(i, totalCount);
             Gizmos.DrawWireSphere(position, 0.25f);
             Gizmos.DrawLine(position, position + squad.transform.forward);
         }
@@ -125,7 +131,6 @@ public class Squad : MonoBehaviour
     private Vector3 GetPositionInFormation(int i, int total)
     {
         int cols = Mathf.FloorToInt(Mathf.Sqrt(total) * 2);
-        float spread = 4;
 
         return new Vector3(i % cols - cols / 2, 0, -i / cols + total / cols / 2) * spread;
     }
