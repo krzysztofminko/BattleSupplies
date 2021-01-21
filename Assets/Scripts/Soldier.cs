@@ -83,6 +83,7 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
     {
         if (nmAgent.enabled)
         {
+            nmAgent.stoppingDistance = distance;
             nmAgent.SetDestination(targetPosition);
             if (nmAgent.pathPending)
             {
