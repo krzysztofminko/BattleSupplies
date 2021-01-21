@@ -52,33 +52,21 @@ public class Squad : MonoBehaviour
             }
 
         //Update target position and formation
+        if (waypointsGroup.waypoints.Count > 0)
+        {
+            transform.position = waypointsGroup.waypoints[0].GetPosition();
+            if (waypointsGroup.waypoints.Count > 1)
+                transform.forward = waypointsGroup.waypoints[1].GetPosition() - transform.position;
+        }        
         SetTargetPosition(transform.position, new Vector2(transform.forward.x, transform.forward.z));
-    }
-
-
-    private Vector3 GetAvgPosition()
-    {
-        Vector3 position = Vector3.zero;
-        if (soldiers.Count > 0)
-        {
-            for (int i = 0; i < soldiers.Count; i++)
-                position += soldiers[i].transform.position;
-            position /= soldiers.Count;
-        }
-        else
-        {
-            position = transform.position;
-        }
-        return position;
     }
     
     private void Update()
     {
-        //Set next waypoint
-        //BUG: GetAvgPosition is not equal target waypoint position in some cases (soldiers.Count)
+        //Set next waypoint        
         if (targetWaypoint < waypointsGroup.waypoints.Count)
         {
-            if (targetWaypoint + 1 < waypointsGroup.waypoints.Count && (GetAvgPosition() - waypointsGroup.waypoints[targetWaypoint].GetPosition()).sqrMagnitude < 10)
+            if (targetWaypoint + 1 < waypointsGroup.waypoints.Count &&  soldiers.Count(s => Distance.Manhattan2D(s.transform.position, s.targetPosition) < 1) == soldiers.Count)
             {
                 targetWaypoint++;
                 transform.forward = waypointsGroup.waypoints[targetWaypoint].GetPosition() - transform.position;
@@ -105,18 +93,13 @@ public class Squad : MonoBehaviour
     static void DrawGizmo(Squad squad, GizmoType gizmoType)
     {
         Gizmos.color = Color.yellow;
-        int totalCount = squad.soldierCounts.Sum(s => s.count);
+        int totalCount = squad.soldiers.Count > 0 ? squad.soldiers.Count : squad.soldierCounts.Sum(s => s.count);
         for (int i = 0; i < totalCount; i++) 
         {
             Vector3 position = squad.transform.position + squad.transform.rotation * squad.GetPositionInFormation(i, totalCount);
             Gizmos.DrawWireSphere(position, 0.25f);
             Gizmos.DrawLine(position, position + squad.transform.forward);
         }
-        Gizmos.color = Color.white;
-        Vector3 avgPosition = squad.GetAvgPosition();
-        Gizmos.DrawWireSphere(avgPosition + Vector3.up * 5, 0.5f);
-        Gizmos.DrawLine(avgPosition, avgPosition + Vector3.up * 5);
-
     }
 
     public void SetTargetPosition(Vector3 position, Vector2 direction)
