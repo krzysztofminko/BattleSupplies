@@ -17,6 +17,7 @@ namespace NodeCanvas.Tasks.Actions
 
 		protected override void OnExecute()
 		{
+			//TODO: Squad object should call OverlapSphere once, instead of calling by every Soldier
 			result.value = Physics.OverlapBox(agent.transform.position + (agent.targetPosition - agent.transform.position).normalized * squareRange.value * rangeForwardOffset, Vector3.one * squareRange.value * 0.5f, Quaternion.LookRotation(agent.targetPosition - agent.transform.position), layerMask.value, QueryTriggerInteraction.Collide)
 				.OrderBy(c => Distance.Manhattan2D(agent.transform.position, c.transform.position))
 				.FirstOrDefault(c => !c.GetComponent<Cover>().reserved 
