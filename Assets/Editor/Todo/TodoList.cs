@@ -66,7 +66,7 @@ public class TodoList : EditorWindow
 		EditorGUILayout.EndHorizontal();
         
 		// display the list
-		GUIStyle itemStyle = new GUIStyle(EditorStyles.wordWrappedMiniLabel);
+		GUIStyle itemStyle = new GUIStyle(EditorStyles.label);
 		itemStyle.alignment = TextAnchor.UpperLeft;
 		_scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
 		int displayCount = 0;
