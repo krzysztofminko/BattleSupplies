@@ -25,4 +25,23 @@ MonoBehaviour:
   - name: Note
     color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
     index: 3
-  items: []
+  items:
+  - owner:
+      name: Normal
+      color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+      index: 0
+    task: Soldiers morale (shooting speed vs ammo count)
+    isComplete: 0
+  - owner:
+      name: Normal
+      color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+      index: 0
+    task: Falling animations instead of ragdoll (many rigidbodies are overloading
+      physics)
+    isComplete: 0
+  - owner:
+      name: Normal
+      color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+      index: 0
+    task: Profiling OverlapSphere
+    isComplete: 0
