@@ -125,6 +125,8 @@ public class Soldier : MonoBehaviour, ITeam, IPickable, ILoadable
             squad.RemoveSoldier(this);
         gameObject.layer = LayerMask.NameToLayer("DyingSoldier");
         nmAgent.enabled = fsmOwner.enabled = animator.enabled = false;
+        GetComponent<Destroyable>().HealthBar.gameObject.SetActive(false);
+        ammoBar.gameObject.SetActive(false);
         onDie?.Invoke();
     }
 

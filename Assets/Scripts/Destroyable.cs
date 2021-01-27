@@ -1,10 +1,6 @@
-﻿using NodeCanvas.Framework;
-using Sirenix.OdinInspector;
-using System;
-using System.Runtime.CompilerServices;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 [HideMonoScript]
 public class Destroyable : MonoBehaviour
@@ -19,8 +15,8 @@ public class Destroyable : MonoBehaviour
             if (_hp != Mathf.Clamp(value, 0, 100))
             {
                 _hp = Mathf.Clamp(value, 0, 100);
-                if (healthBar)
-                    healthBar.Value = HP / HPMax;
+                if (HealthBar)
+                    HealthBar.Value = HP / HPMax;
                 if (_hp == 0)
                 {
                     IsDestroyed = true;
@@ -41,7 +37,8 @@ public class Destroyable : MonoBehaviour
     public bool IsDestroyed { get => _isDestroyed; private set => _isDestroyed = value; }
 
     [SerializeField]
-    private ProgressBar healthBar;
+    private ProgressBar _healthBar;
+    public ProgressBar HealthBar => _healthBar;
 
     [SerializeField]
     private bool overrideDestroyMethod;
@@ -51,7 +48,7 @@ public class Destroyable : MonoBehaviour
 
     private void OnValidate()
     {
-        if(healthBar)
-            healthBar.Value = HP / HPMax;
+        if(_healthBar)
+            _healthBar.Value = HP / HPMax;
     }
 }
