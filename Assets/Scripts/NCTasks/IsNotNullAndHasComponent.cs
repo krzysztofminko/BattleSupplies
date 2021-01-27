@@ -11,6 +11,6 @@ namespace NodeCanvas.Tasks.Conditions
 
 		public BBParameter<Transform> checkedObject;
 
-		protected override bool OnCheck() => checkedObject.value?.GetComponent(typeof(T));
+		protected override bool OnCheck() => checkedObject.value ? checkedObject.value.GetComponent(typeof(T)) : null;
 	}
 }
