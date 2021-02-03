@@ -30,12 +30,6 @@ MonoBehaviour:
       name: Normal
       color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
       index: 0
-    task: Soldiers morale (shooting speed vs ammo count)
-    isComplete: 0
-  - owner:
-      name: Normal
-      color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
-      index: 0
     task: Falling animations instead of ragdoll (many rigidbodies are overloading
       physics)
     isComplete: 0
@@ -44,4 +38,17 @@ MonoBehaviour:
       color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
       index: 0
     task: Profiling OverlapSphere
+    isComplete: 0
+  - owner:
+      name: Urgent
+      color: {r: 0.8867924, g: 0.10457456, b: 0.10457456, a: 1}
+      index: 1
+    task: Change manual resupplying to auto resupplying within range (soldiers will
+      not run and group anymore)
+    isComplete: 0
+  - owner:
+      name: Normal
+      color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+      index: 0
+    task: HealthBox instead carrying wounded?
     isComplete: 0
