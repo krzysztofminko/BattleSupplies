@@ -8,6 +8,8 @@ public class Player : MonoBehaviour, ITeam
 	private int _team;
 	public int Team { get => _team; set => _team = value; }
 
+	private bool barsEnabled;
+
 	private void Awake()
 	{
 		ProgressBar.DisableAll();
@@ -16,9 +18,13 @@ public class Player : MonoBehaviour, ITeam
 	private void Update()
 	{
 		if (Input.GetButtonDown("ShowInfo"))
-			ProgressBar.EnableAll();
+		{
+			barsEnabled = !barsEnabled;
 
-		if (Input.GetButtonUp("ShowInfo"))
-			ProgressBar.DisableAll();
+			if (barsEnabled)
+				ProgressBar.EnableAll();
+			else
+				ProgressBar.DisableAll();
+		}
 	}
 }
