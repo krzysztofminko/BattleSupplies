@@ -59,3 +59,21 @@ MonoBehaviour:
     task: Covers creates chaos and unpredictable outcome of battle, soldier finding
       cover is not shooting. Can better sorting improve that problem?
     isComplete: 0
+  - owner:
+      name: Normal
+      color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+      index: 0
+    task: Implement map/minimap
+    isComplete: 0
+  - owner:
+      name: Normal
+      color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+      index: 0
+    task: Implement warhouses for cargo
+    isComplete: 0
+  - owner:
+      name: Normal
+      color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+      index: 0
+    task: Create world and obstacles
+    isComplete: 0
