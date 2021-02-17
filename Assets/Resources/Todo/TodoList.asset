@@ -47,8 +47,15 @@ MonoBehaviour:
       not run and group anymore)
     isComplete: 1
   - owner:
-      name: Normal
-      color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
-      index: 0
-    task: HealthBox instead carrying wounded?
+      name: Note
+      color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
+      index: 3
+    task: HealthBox instead carrying wounded? Or give some purpose to carry them?
+    isComplete: 0
+  - owner:
+      name: Note
+      color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
+      index: 3
+    task: Covers creates chaos and unpredictable outcome of battle, soldier finding
+      cover is not shooting. Can better sorting improve that problem?
     isComplete: 0
