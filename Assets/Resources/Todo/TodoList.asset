@@ -45,7 +45,7 @@ MonoBehaviour:
       index: 1
     task: Change manual resupplying to auto resupplying within range (soldiers will
       not run and group anymore)
-    isComplete: 0
+    isComplete: 1
   - owner:
       name: Normal
       color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}

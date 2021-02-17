@@ -161,7 +161,7 @@ MonoBehaviour:
   amunition: {fileID: 8273746572265381340, guid: e3384ef23b414f5428e490cd2244b12c, type: 3}
   _ammoCount: 35
   _ammoMax: 35
-  ammoResupplyTrigger: 15
+  ammoResupplyTrigger: 20
   ammoBar: {fileID: 3455477836348515159}
   squad: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
