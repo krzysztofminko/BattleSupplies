@@ -40,13 +40,6 @@ MonoBehaviour:
     task: Profiling OverlapSphere
     isComplete: 0
   - owner:
-      name: Urgent
-      color: {r: 0.8867924, g: 0.10457456, b: 0.10457456, a: 1}
-      index: 1
-    task: Change manual resupplying to auto resupplying within range (soldiers will
-      not run and group anymore)
-    isComplete: 1
-  - owner:
       name: Note
       color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
       index: 3
@@ -76,4 +69,10 @@ MonoBehaviour:
       color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
       index: 0
     task: Create world and obstacles
+    isComplete: 0
+  - owner:
+      name: Note
+      color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
+      index: 3
+    task: NavMeshAgents are blocking each other and not shooting
     isComplete: 0
