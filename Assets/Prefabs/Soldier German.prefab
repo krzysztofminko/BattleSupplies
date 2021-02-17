@@ -1116,9 +1116,13 @@ PrefabInstance:
       propertyPath: ragdollRoot
       value: 
       objectReference: {fileID: 2108793274885607525}
+    - target: {fileID: 3455477836348515159, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: _value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3697569766898659258, guid: d401b021028bea04e953dbed74ca0715, type: 3}
       propertyPath: _serializedVariables.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3697569766898659258, guid: d401b021028bea04e953dbed74ca0715, type: 3}
       propertyPath: _serializedBlackboard
@@ -1132,7 +1136,8 @@ PrefabInstance:
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetVehicle":{"_propertyPath":"Soldier.targetVehicle","_name":"targetVehicle","_id":"8aad0153-4210-40b5-83b8-7e7cbf6dd160","$type":"NodeCanvas.Framework.Variable`1[[VehiclePhysics.Vehicle,
         Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Self":{"_value":1,"_name":"Self","_id":"8ff75857-e75b-4c8d-b8ec-19d2d056f781","$type":"NodeCanvas.Framework.Variable`1[[Soldier,
         Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Cover":{"_name":"Cover","_id":"8497eaef-bb9f-4c0b-9a97-fc3d715604a1","$type":"NodeCanvas.Framework.Variable`1[[Cover,
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"lastPosition":{"_name":"lastPosition","_id":"52fc1d0f-9400-4a28-85f5-33f7d0f93fda","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 3697569766898659259, guid: d401b021028bea04e953dbed74ca0715, type: 3}
       propertyPath: m_Name
@@ -1198,6 +1203,10 @@ PrefabInstance:
       propertyPath: spine
       value: 
       objectReference: {fileID: 2108793274885607497}
+    - target: {fileID: 3697569766898659260, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: _ammoCount
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 3697569766898659263, guid: d401b021028bea04e953dbed74ca0715, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1273,6 +1282,10 @@ PrefabInstance:
     - target: {fileID: 7208744209482694571, guid: d401b021028bea04e953dbed74ca0715, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.3535534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8418185371624879375, guid: d401b021028bea04e953dbed74ca0715, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010654000037713536, guid: d401b021028bea04e953dbed74ca0715, type: 3}
       propertyPath: m_IsActive

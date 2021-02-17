@@ -159,9 +159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amunition: {fileID: 8273746572265381340, guid: e3384ef23b414f5428e490cd2244b12c, type: 3}
-  _ammoCount: 20
-  _ammoMax: 20
-  ammoResupplyTrigger: 10
+  _ammoCount: 35
+  _ammoMax: 35
+  ammoResupplyTrigger: 15
   ammoBar: {fileID: 3455477836348515159}
   squad: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
@@ -183,7 +183,7 @@ MonoBehaviour:
   _hp: 100
   _hpMax: 100
   _isDestroyed: 0
-  healthBar: {fileID: 1386286849823131189}
+  _healthBar: {fileID: 1386286849823131189}
   overrideDestroyMethod: 1
   onDestroy:
     m_PersistentCalls:
@@ -273,7 +273,8 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetVehicle":{"_propertyPath":"Soldier.targetVehicle","_name":"targetVehicle","_id":"8aad0153-4210-40b5-83b8-7e7cbf6dd160","$type":"NodeCanvas.Framework.Variable`1[[VehiclePhysics.Vehicle,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Self":{"_value":1,"_name":"Self","_id":"8ff75857-e75b-4c8d-b8ec-19d2d056f781","$type":"NodeCanvas.Framework.Variable`1[[Soldier,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Cover":{"_name":"Cover","_id":"8497eaef-bb9f-4c0b-9a97-fc3d715604a1","$type":"NodeCanvas.Framework.Variable`1[[Cover,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"lastPosition":{"_name":"lastPosition","_id":"52fc1d0f-9400-4a28-85f5-33f7d0f93fda","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences:
   - {fileID: 0}
   - {fileID: 3697569766898659260}
@@ -309,6 +310,9 @@ MonoBehaviour:
     - {fileID: 3697569766898659260}
   - _json: '{"_name":"Cover","_id":"8497eaef-bb9f-4c0b-9a97-fc3d715604a1","$type":"NodeCanvas.Framework.Variable`1[[Cover,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
+  - _json: '{"_name":"lastPosition","_id":"52fc1d0f-9400-4a28-85f5-33f7d0f93fda","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
 --- !u!65 &3756354949714678628
 BoxCollider:

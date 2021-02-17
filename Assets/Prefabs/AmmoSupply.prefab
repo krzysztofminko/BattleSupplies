@@ -422,8 +422,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7409aa827c47aac4d93e95382862e838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _count: 30
-  max: 30
+  _count: 500
+  max: 500
   uiBar: {fileID: 7548187323632655168}
 --- !u!208 &4807753931271000802
 NavMeshObstacle:

@@ -2,6 +2,7 @@ using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions
@@ -27,6 +28,7 @@ namespace NodeCanvas.Tasks.Actions
 		{
 			timer = 0;
 			delay = Random.Range(minDelay.value, maxDelay.value);
+			delay = minDelay.value;
 			shooted= false;
 			instantiated = false;
 		}

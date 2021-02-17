@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d966ccc0c7cf14f85dfbdc2f87230d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 20
   damageLossDistance: 40
   damageLossCurve:
     serializedVersion: 2
